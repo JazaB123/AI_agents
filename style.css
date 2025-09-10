@@ -256,9 +256,9 @@
     transition: transform 0.3s ease-in-out;
   }
   
-  .project-box:hover {
+  /* .project-box:hover {
     transform: translateY(-10px);
-  }
+  } */
   
   .project-box h2 {
     font-size: 2.5em;

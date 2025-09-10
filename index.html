@@ -17,29 +17,14 @@
     <header>
         <div class="container">
             <nav>
-                <a href="#" class="logo"><span>AI Agents</span></a>
                 <ul class="links">
                     <li><a class="rationale-regular" href="#introduction">Introduction</a></li>
                     <li><a class="rationale-regular" href="#react-loop">LLMs for Acting</a></li>
                     <li><a class="rationale-regular" href="#tool_usage">Tool Usage</a></li>
                     <li><a class="rationale-regular" href="#software_engineering">Software Engineering</a></li>
                     <li><a class="rationale-regular" href="#risks">Risks</a></li>
-                    <li><a class="rationale-regular" href="#end">End</a></li>
                     <li><a class="rationale-regular" href="#about">About Us</a></li>
                 </ul>
-                <i class='bx bx-menu-alt-right' id="menu"></i>
-                <div class="nav-socials">
-                    <span>
-                        <a href="https://www.linkedin.com/in/jarred-boere" target="_blank">
-                            <i class='bx bxl-linkedin-square'></i>
-                        </a>
-                    </span>
-                    <span>
-                        <a href="https://github.com/JazaB123" target="_blank">
-                            <i class='bx bxl-github'></i>
-                        </a>
-                    </span>
-                </div>
             </nav>
         </div>
     </header>
@@ -49,6 +34,8 @@
 
     <section id="react-loop">
         <div class="project-box">
+            <h1>Lets see how ReAct and Reflexion handles this query
+                Prompt: "What is the capital of the country where Eiffel tower is located?"</h1>
             <h2>ReAct Loop Demonstration</h2>
             <p>Reasoning and Acting in Language Models</p>
 
@@ -361,15 +348,532 @@
         </script>
     </section>
 
+    <section id="reflexion-loop">
+        <div class="projects-header">
+            <h1>Reflexion Loop</h1>
+        </div>
 
-    <section id="tool_usage">
+        <div class="projects-container">
+            <div class="project-box">
+                <h2>Reflexion Loop Demonstration</h2>
+                <p>Self-Reflective Reasoning with Verbal Feedback</p>
+
+                <div class="controls" style="margin:2em 0;display:flex;gap:1em;justify-content:center;">
+                    <button class="btn" onclick="startReflexion()">Start Animation</button>
+                    <button class="btn" onclick="resetReflexion()">Reset</button>
+                </div>
+
+                <div class="reflexion-content">
+                    <div class="iterations-container" id="reflexionContainer"></div>
+                    <div class="final-answer" id="reflexionFinal">
+                        Final Output: "Paris" (Correct Answer)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            /* Scoped additions */
+            #reflexion-loop .iterations-container {
+                display: flex;
+                flex-direction: column;
+                gap: 2em;
+                margin-top: 2em;
+            }
+
+            #reflexion-loop .iteration {
+                background: var(--second-background);
+                border: 1px solid #ddd;
+                border-radius: 0.8em;
+                padding: 1em;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.5s ease;
+            }
+
+            #reflexion-loop .iteration.show {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            #reflexion-loop .iteration-header {
+                display: flex;
+                align-items: center;
+                gap: 1em;
+                font-weight: bold;
+                margin-bottom: 1em;
+            }
+
+            #reflexion-loop .iteration-number {
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                background: #e74c3c;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            #reflexion-loop .step {
+                background: #fff;
+                border-left: 4px solid #000;
+                padding: 0.8em 1em;
+                margin: 0.8em 0;
+                border-radius: 0.3em;
+                opacity: 0;
+                transform: translateY(15px);
+                transition: all 0.4s ease;
+            }
+
+            #reflexion-loop .step.show {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            #reflexion-loop .final-answer {
+                margin-top: 2em;
+                padding: 1.2em;
+                text-align: center;
+                font-size: 1.2em;
+                font-weight: bold;
+                border: 2px solid #27ae60;
+                border-radius: 0.5em;
+                background: #d4edda;
+                color: #155724;
+                transform: scale(0);
+                transition: transform 0.5s ease;
+            }
+
+            #reflexion-loop .final-answer.show {
+                transform: scale(1);
+            }
+
+            #reflexion-loop .thinking-dots {
+                display: inline-block;
+                margin-left: 10px;
+            }
+
+            #reflexion-loop .dot {
+                display: inline-block;
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: #e74c3c;
+                margin: 0 2px;
+                animation: reflexion-thinking 1.4s infinite both;
+            }
+
+            #reflexion-loop .dot:nth-child(2) {
+                animation-delay: 0.2s;
+            }
+
+            #reflexion-loop .dot:nth-child(3) {
+                animation-delay: 0.4s;
+            }
+
+            @keyframes reflexion-thinking {
+
+                0%,
+                80%,
+                100% {
+                    opacity: 0.3;
+                    transform: scale(0.8);
+                }
+
+                40% {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+        </style>
+
+        <script>
+            let reflexionAnimating = false;
+            const reflexionData = [
+                {
+                    number: 1,
+                    title: "First Trial",
+                    steps: [
+                        "Task: INPUT → What country is the Eiffel Tower in and what is its capital?",
+                        "Actor: I think France. Capital? Berlin. Output: Berlin",
+                        "Evaluator: ❌ Incorrect. Should be Paris.",
+                        "Reflection: I confused the capital, storing correction.",
+                        "Memory: Saved reflection for next trial."
+                    ]
+                },
+                {
+                    number: 2,
+                    title: "Second Trial",
+                    steps: [
+                        "Task: INPUT → What country is the Eiffel Tower in and what is its capital?",
+                        "Memory: Retrieved reflection about past mistake.",
+                        "Actor: France, capital is Paris. Output: Paris",
+                        "Evaluator: ✅ Correct! Paris is the capital of France."
+                    ]
+                }
+            ];
+
+            function reflexionIteration(data) {
+                const div = document.createElement("div");
+                div.className = "iteration";
+                div.innerHTML = `
+        <div class="iteration-header">
+          <div class="iteration-number">${data.number}</div>
+          <div>${data.title}</div>
+        </div>
+        <div class="iteration-content" id="reflexion-content-${data.number}"></div>
+      `;
+                return div;
+            }
+
+            function reflexionStep(content, index) {
+                const div = document.createElement("div");
+                div.className = "step";
+                div.innerHTML = `<strong>Step ${index}:</strong> ${content}`;
+                return div;
+            }
+
+            async function startReflexion() {
+                if (reflexionAnimating) return;
+                reflexionAnimating = true;
+                document.querySelector("#reflexion-loop .btn").disabled = true;
+
+                const container = document.getElementById("reflexionContainer");
+                container.innerHTML = "";
+                document.getElementById("reflexionFinal").classList.remove("show");
+
+                for (let i = 0; i < reflexionData.length; i++) {
+                    const iterationElement = reflexionIteration(reflexionData[i]);
+                    container.appendChild(iterationElement);
+                    await sleep(300);
+                    iterationElement.classList.add("show");
+
+                    const contentElement = document.getElementById(`reflexion-content-${reflexionData[i].number}`);
+                    for (let j = 0; j < reflexionData[i].steps.length; j++) {
+                        const stepElement = reflexionStep(reflexionData[i].steps[j], j + 1);
+                        contentElement.appendChild(stepElement);
+                        await sleep(300);
+                        stepElement.classList.add("show");
+
+                        if (reflexionData[i].steps[j].includes("Actor") || reflexionData[i].steps[j].includes("Reflection")) {
+                            const dots = document.createElement("div");
+                            dots.className = "thinking-dots";
+                            dots.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+                            stepElement.appendChild(dots);
+                            await sleep(2000);
+                            dots.remove();
+                        }
+                    }
+                    await sleep(500);
+                }
+
+                document.getElementById("reflexionFinal").classList.add("show");
+                reflexionAnimating = false;
+                document.querySelector("#reflexion-loop .btn").disabled = false;
+            }
+
+            function resetReflexion() {
+                reflexionAnimating = false;
+                document.querySelector("#reflexion-loop .btn").disabled = false;
+                document.getElementById("reflexionContainer").innerHTML = "";
+                document.getElementById("reflexionFinal").classList.remove("show");
+            }
+
+            function sleep(ms) {
+                return new Promise((res) => setTimeout(res, ms));
+            }
+        </script>
     </section>
+
+
+    <section id="tool-usage">
+        <div class="projects-header">
+            <h1>Tool Usage</h1>
+        </div>
+
+        <div class="projects-container">
+            <!-- Card 1 -->
+            <div class="project-box">
+                <h2>What are tools?</h2>
+                <div style="display:flex;gap:2em;flex-wrap:wrap;">
+                    <div style="flex:1;min-width:250px;text-align:left;">
+                        <blockquote style="border-left:3px solid #000;padding-left:1em;opacity:0.8;">
+                            “In the context of agentic LLMs, tool use refers to the model's ability
+                            to interact with external tools, APIs, or functions to perform tasks it
+                            cannot accomplish through language generation alone.”
+                        </blockquote>
+                        <p><strong>Enables LLMs to:</strong></p>
+                        <ul>
+                            <li>Make API calls or execute functions</li>
+                            <li>Perform real-world operations instead of hallucinating answers</li>
+                        </ul>
+                    </div>
+                    <div style="flex:1;min-width:250px;">
+                        <img src="images/3_new/05.png" alt="Tool illustration"
+                            style="width:100%;border-radius:0.5em;" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="project-box">
+                <h2>Why do LLMs need tools?</h2>
+                <div style="display:flex;gap:2em;flex-wrap:wrap;">
+                    <div style="flex:1;min-width:250px;text-align:left;">
+                        <ul>
+                            <li>LLMs struggle with arithmetic, dates, factual lookups.</li>
+                            <li>Toolformer learns to call calculators & QA systems.</li>
+                            <li>Benchmarks show strong performance improvements.</li>
+                        </ul>
+                    </div>
+                    <div style="flex:1;min-width:250px;">
+                        <img src="images/3_new/03.png" alt="Performance graph"
+                            style="width:100%;border-radius:0.5em;" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Interactive Demo -->
+            <div class="project-box">
+                <h2>Try it yourself</h2>
+                <p>Simulate a tool call: ask a math question (e.g. <code>123 * 45</code>)</p>
+                <input id="userPrompt" type="text" placeholder="Enter a math question"
+                    style="width:100%;padding:0.8em;border-radius:0.5em;border:1px solid #000;" />
+                <br /><br />
+                <button class="btn" onclick="runToolDemo()">Run Tool Demo</button>
+                <pre id="demoOutput" style="margin-top:1em;opacity:0.8;"></pre>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="project-box">
+                <h2>How LLMs learn tool use</h2>
+                <ol style="text-align:left;">
+                    <li>Model generates text and inserts tool calls</li>
+                    <li>Tool calls are executed; outputs appended</li>
+                    <li>Model checks if tool calls improved prediction</li>
+                    <li>Only useful interactions are kept for training</li>
+                </ol>
+                <img src="images/3_new/01.png" alt="Learning process" style="width:100%;border-radius:0.5em;" />
+            </div>
+
+            <!-- Card 5 -->
+            <div class="project-box">
+                <h2>Scenarios where tools are useful</h2>
+                <div style="display:flex;gap:2em;flex-wrap:wrap;">
+                    <div style="flex:1;min-width:250px;text-align:left;">
+                        <ol>
+                            <li>Knowledge Access (SQL, Search, RAG)</li>
+                            <li>Computation (Calculators, Spreadsheets)</li>
+                            <li>World Interaction (Calendars, Embodied agents)</li>
+                        </ol>
+                    </div>
+                    <div style="flex:1;min-width:250px;text-align:left;">
+                        <ol start="4">
+                            <li>Non-Text Modalities (Image APIs, Audio APIs)</li>
+                            <li>Specialized Models (Domain LMs, orchestration)</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="project-box">
+                <h2>When tools are less effective</h2>
+                <ul style="text-align:left;">
+                    <li>Machine translation, summarization, sentiment analysis</li>
+                    <li>Tasks where base LMs (like GPT-4) outperform specialized tools</li>
+                </ul>
+            </div>
+
+            <!-- Card 7 -->
+            <div class="project-box">
+                <h2>Recap</h2>
+                <ul style="text-align:left;">
+                    <li>Overcomes model limitations</li>
+                    <li>Enables real-world interactivity</li>
+                    <li>Boosts accuracy & flexibility</li>
+                    <li>Still evolving: orchestration & reliability challenges</li>
+                </ul>
+            </div>
+        </div>
+
+        <script>
+            function runToolDemo() {
+                const input = document.getElementById("userPrompt").value;
+                let output = "";
+                try {
+                    const match = input.match(/(\d+)\s*([+\-*/])\s*(\d+)/);
+                    if (match) {
+                        const a = parseFloat(match[1]);
+                        const op = match[2];
+                        const b = parseFloat(match[3]);
+                        switch (op) {
+                            case "+": output = a + b; break;
+                            case "-": output = a - b; break;
+                            case "*": output = a * b; break;
+                            case "/": output = b !== 0 ? a / b : "Error: divide by zero"; break;
+                        }
+                    } else {
+                        output = "This demo only supports simple arithmetic (e.g. 12 * 34)";
+                    }
+                } catch (err) {
+                    output = "Error: " + err.message;
+                }
+                document.getElementById("demoOutput").textContent = "Tool Output: " + output;
+            }
+        </script>
+    </section>
+
 
     <section id="software_engineering">
     </section>
 
     <section id="risks">
+        <div class="projects-header">
+            <h1>Risks</h1>
+        </div>
+
+        <div class="projects-container">
+            <div class="project-box">
+                <p>
+                    Now that we saw all the possible utilizations of LLMs, let's talk risk. For example, a
+                    government agency utilizing language agents to automate part of their process. This happens all
+                    over the place and lately in Potsdam as well when it comes to housing benefit
+                    applications.<sup><a
+                            href="https://www.potsdam.de/de/151-potsdam-startet-ki-unterstuetzte-wohngeld-antragsbearbeitung"
+                            class="reference">[1]</a></sup>
+                </p>
+
+                <p>
+                    The capabilities of the implementation are unknown, but automatic answering of emails,
+                    checking for application completeness, and a chatbot for workers of the municipality are part of
+                    the discussion.
+                </p>
+
+                <img src="images/5/email.png" alt="Email Illustration" style="max-width:400px; border-radius:0.5em;">
+
+                <p>
+                    This illustrates what could go wrong, and as reliable agents, which always follow the system
+                    prompt, are quite rare, security systems need to be in place. The two main goals are that a
+                    language agent should never violate the privacy requirements (e.g., hand out information about
+                    other applicants) and should never misuse tools (e.g., generate faulty emails).
+                </p>
+            </div>
+
+            <div class="project-box">
+                <h2>Potential Weaknesses</h2>
+
+                <img src="images/5/core-loop.png" alt="Core Loop Illustration" style="width:100%; border-radius:0.5em;">
+
+                <h3>Input</h3>
+                <p>
+                    The input is the main source of malicious or harmful information. The biggest risk is prompt
+                    injections<sup><a href="https://arxiv.org/abs/2503.18813" class="reference">[2]</a></sup>,
+                    which aim to get the language agent to behave outside its intended scope.
+                </p>
+
+                <p>
+                    Imagine a language agent controlled via chat. There should be administrators with the ability to
+                    alter its behavior while you wouldn't want it to do what a
+                    normal user instructs it to. This necessitates the difficult ability to differentiate
+                    between contexts and privileges of users.
+                </p>
+
+                <div class="text">
+                    This is a small game on prompt injections, made by h43z, where you try to get the LLM to reveal its
+                    secrets.
+                </div>
+                <iframe id="dynamicIframe" src="https://gpa.43z.one/"
+                    style="border:1px solid #ddd; border-radius:0.5em; width:100%;"></iframe>
+            </div>
+
+            <div class="project-box">
+                <h3>Output</h3>
+                <p>
+                    The output is where faulty input or faulty reasoning leads to real problems.
+                </p>
+                <p>
+                    A language agent might violate privacy by handing out information not intended for the specific
+                    user.
+                    This shows that output context also needs to be considered.
+                </p>
+                <p>
+                    Another risk is misuse of tools. A language agent mishandling a database might make all successive
+                    tasks impossible, causing long-term harm. More powerful tools need stronger protection.
+                </p>
+            </div>
+
+            <div class="project-box">
+                <h2>Methods</h2>
+                <p>
+                    Google details methods to counteract these problems.<sup><a
+                            href="https://research.google/pubs/an-introduction-to-googles-approach-for-secure-ai-agents/"
+                            class="reference">[3]</a></sup>
+                </p>
+
+                <img src="images/5/security.png" alt="Security Illustration" style="width:100%; border-radius:0.5em;">
+
+                <h3>Traditional</h3>
+                <p>
+                    Limit input and output of the LLM. Filter harmful prompts and exclude sensitive data.
+                    Standardize APIs to prevent misuse. Use IT security practices like testing, logging, and human
+                    oversight.
+                </p>
+
+                <h3>Reasoning</h3>
+                <p>
+                    Google proposes “soft constraints” to allow helpful emergent behavior. This includes adversarial
+                    training
+                    and LLM-based guard models that analyze and predict harmful behavior. These systems may limit
+                    privileges or require human intervention.
+                    <sup><a href="https://arxiv.org/abs/2402.01817" class="reference">[4]</a></sup>
+                </p>
+            </div>
+
+            <div class="project-box">
+                <h2>Societal Implications</h2>
+                <p class="quote">“Everyone wants to generate texts with AI. No one wants to read AI generated texts.”
+                </p>
+
+                <p>
+                    Municipalities may automate emails, but this can increase workload for citizens. There is an
+                    inherent conflict
+                    of interest between users and developers.
+                </p>
+
+                <p>
+                    Google and Potsdam both point to human supervision. But humans tend to lose vigilance when systems
+                    perform
+                    reliably. AI agents should only be used if they surpass humans without supervision.
+                    <sup><a href="https://arxiv.org/abs/2402.01817" class="reference">[5]</a></sup>
+                </p>
+
+                <p>
+                    With that in mind, consider carefully whether a language agent is the correct solution for your
+                    problem.
+                </p>
+
+                <img src="images/5/societal.png" alt="Societal Implications Illustration"
+                    style="width:100%; border-radius:0.5em;">
+            </div>
+        </div>
+
+        <script>
+            function adjustIframeSize() {
+                const textElement = document.querySelector('#risks .text');
+                const iframe = document.querySelector('#risks #dynamicIframe');
+                if (!textElement || !iframe) return;
+                const textWidth = textElement.offsetWidth;
+                iframe.style.width = textWidth + 'px';
+                iframe.style.height = (textWidth * 0.6667) + 'px';
+            }
+            window.addEventListener('resize', adjustIframeSize);
+            window.addEventListener('load', adjustIframeSize);
+        </script>
     </section>
+
+
 
     <section id="about">
         <img src="">
