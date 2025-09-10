@@ -1,316 +1,415 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Portfolio - Jarred Boere</title>
-  <link rel="stylesheet" href="style.css">
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AI Agents</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <header>
-    <div class="container">
-      <nav>
-        <a href="#" class="logo"><span>Jarred</span></a>
-        <ul class="links">
-            <li><a class="rationale-regular" href="#home">Home</a></li>
-            <li><a class="rationale-regular" href="#about">About Me</a></li>
-            <li><a class="rationale-regular" href="#projects">Projects</a></li>
-            <li><a class="rationale-regular" href="#experience">Experience</a></li>
-            <li><a class="rationale-regular" href="#education">Education</a></li>
-        </ul>
-        <i class='bx bx-menu-alt-right' id="menu"></i>
-        <div class="nav-socials">
-          <span>
-              <a href="https://www.linkedin.com/in/jarred-boere" target="_blank">
-                  <i class='bx bxl-linkedin-square'></i>
-              </a>
-          </span>
-          <span>
-              <a href="https://github.com/JazaB123" target="_blank">
-                  <i class='bx bxl-github'></i>
-              </a>
-          </span>
-      </div>
-      </nav>
-    </div>
-  </header>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo"><span>AI Agents</span></a>
+                <ul class="links">
+                    <li><a class="rationale-regular" href="#introduction">Introduction</a></li>
+                    <li><a class="rationale-regular" href="#react-loop">LLMs for Acting</a></li>
+                    <li><a class="rationale-regular" href="#tool_usage">Tool Usage</a></li>
+                    <li><a class="rationale-regular" href="#software_engineering">Software Engineering</a></li>
+                    <li><a class="rationale-regular" href="#risks">Risks</a></li>
+                    <li><a class="rationale-regular" href="#end">End</a></li>
+                    <li><a class="rationale-regular" href="#about">About Us</a></li>
+                </ul>
+                <i class='bx bx-menu-alt-right' id="menu"></i>
+                <div class="nav-socials">
+                    <span>
+                        <a href="https://www.linkedin.com/in/jarred-boere" target="_blank">
+                            <i class='bx bxl-linkedin-square'></i>
+                        </a>
+                    </span>
+                    <span>
+                        <a href="https://github.com/JazaB123" target="_blank">
+                            <i class='bx bxl-github'></i>
+                        </a>
+                    </span>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-  <section id="home">
-    <img src="cv pic 1.jpeg">
-    <div class="info-box">
-        <h1><span>Hi! I'm Jarred</span></h1>
-        <h3><span>Software Engineer</span></h3>
-        <h3><i class='bx bxs-map-pin'></i>Berlin</h3>
-    </div>
-    <div class="btn-box">
-        <a href="Jarred Boere - CV - 2025.pdf" download="Jarred_Boere_CV" target="_blank">
-            <div class="btn">Download My CV</div>
-        </a>
-    </div>
-  </section>
+    <section id="introduction">
+    </section>
 
-  <section id="about">
-    <div class="about-box">
-        <div class="about-info">
-            <h1><span>About Me</span></h1>
-            <p>Software Engineer with a passion for creating innovative web applications and automating business processes. Currently pursuing an MSc in Cognitive Systems at the University of Potsdam, focusing on computational linguistics, machine learning, and artificial intelligence. With experience in front-end and back-end development, API integration, and system administration, I thrive on solving complex problems and delivering efficient, user-centered solutions.</p>
+    <section id="react-loop">
+        <div class="project-box">
+            <h2>ReAct Loop Demonstration</h2>
+            <p>Reasoning and Acting in Language Models</p>
+
+            <div class="controls">
+                <button class="btn" onclick="startAnimation()">Start Animation</button>
+                <button class="btn" onclick="resetAnimation()">Reset</button>
+            </div>
+
+            <div class="react-content">
+                <div id="loopContainer"></div>
+
+                <div class="final-answer" id="finalAnswer">
+                    Final Output: Paris
+                </div>
+            </div>
         </div>
 
-        <h2><span>Skills</span></h2>
+        <style>
+            /* Only ReAct-specific additions, reusing your global CSS */
+            #react-loop .controls {
+                margin: 2em 0;
+                display: flex;
+                justify-content: center;
+                gap: 1em;
+            }
 
-        <div class="skills">
-            <ul>
-                <li>
-                    <i class="bx bx-chevron-right" ></i>HTML
-                </li>
-                <li>
-                    <i class="bx bx-chevron-right" ></i>CSS
-                </li>
-                <li>
-                    <i class="bx bx-chevron-right" ></i>Javascipt
-                </li>
-                <li>
-                    <i class="bx bx-chevron-right" ></i>Python
-                </li>
-                <li>
-                    <i class="bx bx-chevron-right" ></i>C#
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    <i class="bx bx-chevron-right" ></i>Node
-                </li>
-                <li>
-                    <i class="bx bx-chevron-right" ></i>React
-                </li>
-                <li>
-                    <i class="bx bx-chevron-right" ></i>SQL
-                </li>
-                <li>
-                    <i class="bx bx-chevron-right" ></i>Angular
-                </li>
-            </ul>
-        </div>
-    </div>
-    <img src="Grad Photo.jpg">
-  </section>
+            #react-loop .iteration {
+                border: 1px solid #ddd;
+                border-radius: 0.5em;
+                margin: 1.5em 0;
+                padding: 1em;
+                background: #f8f9fa;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.5s ease;
+            }
 
-  <section id="projects">
-    <div class="projects-header">
-      <h1><span>Projects</span></h1>
-    </div>
-    <div class="projects-container">
-      <div class="project-box">
-        <h2>Customizable Online Gift Store</h2>
-        <p>As part of my bachelor thesis, I worked on developing an online gift store for a company,
-            allowing customers to upload personalized designs and have them manufactured on a
-            variety of selected products (e.g., mugs, t-shirts, etc.). This project provided a seamless,
-            user-friendly experience for customers to personalize and preview their designs in
-            real-time before placing an order.</p>
-        <a href="https://github.com/Informatics-370/370development-team-18-let-s-get-personal" target="_blank" class="btn">View Project</a>
-      </div>
-  
-      <div class="project-box">
-        <h2>Website Redesign for Mr. Home Repair</h2>
-        <p>For Mr. Home Repair, I was responsible for a comprehensive redesign and migration of
-            their website, focused on improving user experience, automating the customer journey,
-            and optimizing the site for tracking and analytics. The goal was to enhance the company's
-            digital presence, streamline operations, and drive customer engagement through a
-            seamless, automated workflow.</p>
-        <a href="https://mrhomerepair.co.za/" target="_blank" class="btn">View Project</a>
-      </div>
+            #react-loop .iteration.show {
+                opacity: 1;
+                transform: translateY(0);
+            }
 
-      <div class="project-box">
-        <h2>Event Management System</h2>
-        <p>This project is an Event Management System built in C#, designed to manage events by allowing users to create, update, and view event details. It features a console-based interface where users can update event information such as name, description, date, and location. The system validates inputs, ensures data integrity, and allows users to modify event details while maintaining a clean and user-friendly flow. The project uses essential C# concepts like object-oriented programming, nullable types, and exception handling to ensure a robust and efficient event management process.</p>
-        <a href="https://github.com/JazaB123/EventManagementSystem.git" target="_blank" class="btn">View Project</a>
-      </div>
-    </div>
-  </section>
+            #react-loop .iteration-header {
+                display: flex;
+                align-items: center;
+                gap: 1em;
+                font-weight: bold;
+                margin-bottom: 0.5em;
+            }
 
-  <section id="experience">
-    <div class="experience-header">
-      <h1><span>Experience</span></h1>
-    </div>
-    <div class="experience-container">
-      <div class="experience-box">
-        <div class="experience-details">
-          <h2><span>Werkstudent</span></h2>
-          <h3>Albatros Coding</h3>
-          <span class="duration-location">April 2025 - Present | Berlin, Germany</span>
-          <h4>Full-Stack Development:</h4>
-          <p>Developed full-stack applications using Flask (backend), PostgreSQL (database), and HTML/JavaScript (frontend).</p>
-          <h4>Frontend UI Design:</h4> 
-          <p>Designed and implemented interactive user interfaces with responsive, client-facing features.</p>
-          <h4>AI & LLM Integration:</h4>
-          <p>Built and deployed LangGraph-powered LLM applications for intelligent, graph-based task orchestration.</p> 
-        </div>
-        <div class="experience-logo black-background">
-          <img src="Logo_AlbatrosCoding_white_aligned.svg" alt="Albatros Logo">
-        </div>
-      </div>
+            #react-loop .iteration-number {
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                background: #000;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 14px;
+            }
 
-      <!-- Job 1 -->
-      <div class="experience-box">
-        <div class="experience-details">
-          <h2><span>Software Engineer</span></h2>
-          <h3>Intx Software</h3>
-          <span class="duration-location">July 2024 - February 2025 | Johannesburg, South Africa</span>
-          <h4>Front-End Development:</h4>
-          <p>Design and implement user interfaces for web applications</p>
-          <h4>Back-End Development:</h4> 
-          <p>Development Build and maintain server-side logic and API's using server-side languages.</p>
-          <h4>Integration and API's:</h4>
-          <p>Integrate third-party services and API's to enhance the functionality of the applications.</p>
-          <h4>Security:</h4>
-          <p>Regulary update and patch software components to mitigate security vulnerabilities.</p> 
-        </div>
-        <div class="experience-logo">
-          <img src="INTX_SiteLogo.png" alt="Intx Software Logo">
-        </div>
-      </div>
-  
-      <!-- Job 2 -->
-      <div class="experience-box">
-        <div class="experience-details">
-          <h2><span>Desk and System Supervisor</span></h2>
-          <h3>Sorbet Dunkeld</h3>
-          <span class="duration-location">November 2023 - June 2024 | Johannesburg, South Africa</span>
-            <h4>System Administration:</h4>
-            <p> Took charge of the Sorbet's reservation and
-                appointment system, ensuring its functionality, accuracy, and
-                security. Perform regular system updates, troubleshoot technical
-                issues, and implement improvements to enhance user experience
-                and operational efficiency.</p>
-            <h4>Front Desk Operations:</h4> 
-            <p> Efficiently manage the front desk operations at Sorbet, ensuring smooth check-ins, appointments scheduling, and customer inquiries handling.</p> 
-        </div>
-        <div class="experience-logo">
-          <img src="Sorbet.jpeg" alt="Sorbet Logo">
-        </div>
-      </div>
-  
-      <!-- Job 3 -->
-      <div class="experience-box">
-        <div class="experience-details">
-          <h2><span>Web Developer</span></h2>
-          <h3>Mr Home Repair</h3>
-          <span class="duration-location">February 2022 - February 2023 | Johannesburg, South Africa</span>
-          <h4>Website Interface Design & Routine Maintenance</h4>
-          <p>
-            Designed and implemented new interfaces for the website using
-            WordPress and consistently performed routine updates.
-          </p>
-          <h4>Backend Migration & Full Website Rebuild</h4>
-          <p>
-            Migrated the backend of the site onto WordPress and completely rebuilt the entire website.
-          </p>
-          <h4>Tracking Integration with Google Tag & Facebook Pixel</h4>
-          <p>
-            Implemented numerous tracking integrations including, Google Tag and Facebook Pixel.
-          </p>
-          <h4>Customer Journey Automation with Zapier & Mailchimp</h4>
-          <p>
-            Fully automated the customer journey from visit to checkout using a combination of Zapier and Mailchimp.
-          </p>
-        </div>
-        <div class="experience-logo">
-          <img src="MrHomeRepair.webp" alt="Freelance Logo">
-        </div>
-      </div>
-  
-      <!-- Job 4 -->
-      <div class="experience-box">
-        <div class="experience-details">
-          <h2><span>Water Polo Coach</span></h2>
-          <h3>NTS Water Polo</h3>
-          <span class="duration-location">April 2022 - September 2022 | Pretoria, South Africa</span>
-          <h4>Water Polo Coaching & Fundamentals Instruction</h4>
-          <p>Worked as a Water Polo Coach/Manager during the second year of
-            my studies where I taught a squad of 28, 12 to 13 year old's the
-            fundamentals of waterpolo.</p>
-          <h4>Tour Finances, Kit Sourcing & Budgeting</h4>
-          <p>
-            Managed the tour finances including kit sourcing and delivery and food budgeting.
-          </p>
-          <h4>Team Strategy & Tournament Preparation (South African IPT 2022)</h4>
-          <p>
-            Managed team strategy, squad rotation and training to prepare the team for the South African Inter-Provincial Tournament 2022.
-          </p>
-        </div>
-        <div class="experience-logo">
-          <img src="NTS.jpeg" alt="Water Polo Coach Logo">
-        </div>
-      </div>
-    </div>
-  </section>
+            #react-loop .step {
+                border-left: 3px solid #000;
+                padding: 0.8em 1em;
+                margin: 1em 0;
+                background: #fff;
+                opacity: 0;
+                transform: translateX(-20px);
+                transition: all 0.4s ease;
+            }
 
-  <section id="education">
-    <h1 class="header"><span>Education</span></h1>
+            #react-loop .step.show {
+                opacity: 1;
+                transform: translateX(0);
+            }
 
-    <div class="education-container">
+            #react-loop .decision-box {
+                background: #fff3cd;
+                border: 1px solid #ffeaa7;
+                padding: 1em;
+                margin: 1em 0;
+                text-align: center;
+                font-weight: 500;
+                opacity: 0;
+                transition: all 0.3s ease;
+            }
 
-        <div class="box">
-            <h1><span>MSc Cognitive Systems - University of Potsdam</span></h1>
-            <h2>2024-Present</h2>
-            <br>
-            <img src="uni_logo.png">
+            #react-loop .decision-box.show {
+                opacity: 1;
+            }
+
+            #react-loop .arrow {
+                text-align: center;
+                font-size: 1.2em;
+                margin: 0.5em 0;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            #react-loop .arrow.show {
+                opacity: 1;
+            }
+
+            #react-loop .final-answer {
+                margin-top: 2em;
+                padding: 1.2em;
+                text-align: center;
+                font-size: 1.2em;
+                font-weight: bold;
+                border: 2px solid #28a745;
+                border-radius: 0.5em;
+                background: #d4edda;
+                color: #155724;
+                transform: scale(0);
+                transition: transform 0.5s ease;
+            }
+
+            #react-loop .final-answer.show {
+                transform: scale(1);
+            }
+
+            #react-loop .thinking-dots {
+                display: inline-block;
+                margin-left: 10px;
+            }
+
+            #react-loop .dot {
+                display: inline-block;
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: #000;
+                margin: 0 2px;
+                animation: thinking 1.4s infinite both;
+            }
+
+            #react-loop .dot:nth-child(2) {
+                animation-delay: 0.2s;
+            }
+
+            #react-loop .dot:nth-child(3) {
+                animation-delay: 0.4s;
+            }
+
+            @keyframes thinking {
+
+                0%,
+                80%,
+                100% {
+                    opacity: 0.3;
+                    transform: scale(0.8);
+                }
+
+                40% {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+        </style>
+
+        <script>
+            let isAnimating = false;
+            const iterationData = [
+                {
+                    number: 1,
+                    title: "First Iteration",
+                    steps: [
+                        "Input: What is the capital of the country where the Eiffel Tower is located?",
+                        "LLM Thought: I need to know where the Eiffel Tower is. Action: Search('where is the Eiffel Tower?')",
+                        "Action executed → Controller queries knowledge base",
+                        "Observation: Eiffel Tower is in France."
+                    ]
+                },
+                {
+                    number: 2,
+                    title: "Second Iteration",
+                    steps: [
+                        "Input (with observation): Eiffel Tower is in France.",
+                        "LLM Thought: I need the capital of France. Action: Search('capital of France')",
+                        "Action executed → Controller queries knowledge base",
+                        "Observation: The capital of France is Paris."
+                    ]
+                },
+                {
+                    number: 3,
+                    title: "Third Iteration",
+                    steps: [
+                        "Input (full context): Eiffel Tower is in France. Capital of France?",
+                        "LLM Answer: Paris"
+                    ]
+                }
+            ];
+
+            function createIteration(data) {
+                const div = document.createElement("div");
+                div.className = "iteration";
+                div.innerHTML = `
+        <div class="iteration-header">
+          <div class="iteration-number">${data.number}</div>
+          <div>${data.title}</div>
         </div>
-    
-        <div class="box">
-            <h1><span>BIT Information Systems - University of Pretoria</span></h1>
-            <h2>2020-2023</h2>
-            <br>
-            <img src="UP logo.png">
+        <div class="iteration-content" id="content-${data.number}"></div>
+      `;
+                return div;
+            }
+
+            function createStep(content, index) {
+                const div = document.createElement("div");
+                div.className = "step";
+                div.innerHTML = `<strong>Step ${index}:</strong> ${content}`;
+                return div;
+            }
+
+            function createDecisionBox(content) {
+                const div = document.createElement("div");
+                div.className = "decision-box";
+                div.textContent = content;
+                return div;
+            }
+
+            function createArrow() {
+                const div = document.createElement("div");
+                div.className = "arrow";
+                div.textContent = "↓";
+                return div;
+            }
+
+            async function startAnimation() {
+                if (isAnimating) return;
+                isAnimating = true;
+                document.querySelectorAll("#react-loop .btn")[0].disabled = true;
+
+                const container = document.getElementById("loopContainer");
+                container.innerHTML = "";
+                document.getElementById("finalAnswer").classList.remove("show");
+
+                for (let i = 0; i < iterationData.length; i++) {
+                    await animateIteration(i);
+                    await sleep(500);
+                }
+
+                await sleep(800);
+                document.getElementById("finalAnswer").classList.add("show");
+                isAnimating = false;
+                document.querySelectorAll("#react-loop .btn")[0].disabled = false;
+            }
+
+            async function animateIteration(index) {
+                const data = iterationData[index];
+                const iterationElement = createIteration(data);
+                document.getElementById("loopContainer").appendChild(iterationElement);
+
+                await sleep(200);
+                iterationElement.classList.add("show");
+                await sleep(400);
+
+                const contentElement = document.getElementById(`content-${data.number}`);
+
+                for (let i = 0; i < data.steps.length; i++) {
+                    const stepElement = createStep(data.steps[i], i + 1);
+                    contentElement.appendChild(stepElement);
+
+                    await sleep(300);
+                    stepElement.classList.add("show");
+
+                    if (data.steps[i].includes("LLM")) {
+                        const dots = document.createElement("div");
+                        dots.className = "thinking-dots";
+                        dots.innerHTML =
+                            '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+                        stepElement.appendChild(dots);
+                        await sleep(2000);
+                        dots.remove();
+                    }
+
+                    if (data.steps[i].includes("Action")) {
+                        const decision = createDecisionBox("Action detected → Execute");
+                        contentElement.appendChild(decision);
+                        await sleep(200);
+                        decision.classList.add("show");
+                    }
+                    if (data.steps[i].includes("Answer")) {
+                        const decision = createDecisionBox("Answer detected → Stop loop");
+                        contentElement.appendChild(decision);
+                        await sleep(200);
+                        decision.classList.add("show");
+                    }
+
+                    if (i < data.steps.length - 1) {
+                        const arrow = createArrow();
+                        contentElement.appendChild(arrow);
+                        await sleep(100);
+                        arrow.classList.add("show");
+                    }
+
+                    await sleep(600);
+                }
+            }
+
+            function sleep(ms) {
+                return new Promise((res) => setTimeout(res, ms));
+            }
+            function resetAnimation() {
+                isAnimating = false;
+                document.querySelectorAll("#react-loop .btn")[0].disabled = false;
+                document.getElementById("loopContainer").innerHTML = "";
+                document.getElementById("finalAnswer").classList.remove("show");
+            }
+        </script>
+    </section>
+
+
+    <section id="tool_usage">
+    </section>
+
+    <section id="software_engineering">
+    </section>
+
+    <section id="risks">
+    </section>
+
+    <section id="about">
+        <img src="">
+        <div class="info-box">
+            <h1><span>Meet the Team</span></h1>
         </div>
-    
-        <div class="box">
-            <h1><span>High school - St John's College</span></h1>
-            <h2>2015-2019</h2>
-            <br>
-            <img src="StJohns-logo_gold.svg">
+    </section>
+
+    <footer>
+        <div class="col-left">
+            <div class="col-box">
+                <span><i class='bx bxs-envelope'></i></span>
+                <span>
+                    jboere01@gmail.com
+                </span>
+            </div>
+
+            <div class="col-box">
+                <span><i class='bx bxs-phone'></i></span>
+                <span>
+                    +49 176 80431522
+                </span>
+            </div>
         </div>
+        <div class="col-right">
+            <div class="social-icons">
+                <span>
+                    <a href="https://www.linkedin.com/in/jarred-boere" target="_blank">
+                        <i class='bx bxl-linkedin-square'></i>
+                    </a>
+                </span>
+                <span>
+                    <a href="https://github.com/JazaB123" target="_blank">
+                        <i class='bx bxl-github'></i>
+                    </a>
+                </span>
+            </div>
+    </footer>
 
-    </div>
-
-  </section>
-
-  <footer>
-    <div class="col-left">
-      <div class="col-box">
-        <span><i class='bx bxs-envelope' ></i></span>
-          <span>
-            jboere01@gmail.com
-          </span>
-      </div>
-
-      <div class="col-box">
-        <span><i class='bx bxs-phone'></i></span>
-          <span>
-            +49 176 80431522
-          </span>
-      </div>
-    </div>
-    <div class="col-right">
-      <div class="social-icons">
-        <span>
-            <a href="https://www.linkedin.com/in/jarred-boere" target="_blank">
-                <i class='bx bxl-linkedin-square'></i>
-            </a>
-        </span>
-        <span>
-            <a href="https://github.com/JazaB123" target="_blank">
-                <i class='bx bxl-github'></i>
-            </a>
-        </span>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
