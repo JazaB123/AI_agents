@@ -1,0 +1,690 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    scroll-behavior: smooth;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  h1, h2, h3 {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
+
+  :root{
+    --background: #ffffff;
+    --second-background: #ffffff;
+  }
+  
+  body {
+    min-height: 100vh;
+    background-color: var(--background);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  nav{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 2em 15%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+  }
+  
+  ul{
+    display: flex;
+    align-items: center;
+    gap: 3em;
+  }
+  
+  nav ul a{
+    color: #000000;
+    opacity: 0.7;
+    transition: 0.2s ease-in-out;
+  }
+  
+  nav ul a:hover{
+    opacity: 1;
+  }
+
+  .logo{
+    font-size: 2em;
+    color: #000000;
+    font-weight: 800;
+    opacity: 0.8;
+    transition: 0.2s ease-in-out;
+  }
+
+  .logo:hover{
+    opacity: 1;
+  }
+
+  .nav-socials span{
+    font-size: 1.3em;
+  }
+  .nav-socials{
+    display: flex;
+    align-items: baseline;
+    justify-content: left;
+    gap: 1em;
+  }
+  .nav-socials i{
+    font-size: 2em;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    color:#000000;
+  }
+  .nav-socials i:hover{
+    color: #000000;
+  }
+
+  .btn{
+    padding: 0.7em 1.5em;
+    color: #000000;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 0.5em;
+    font-size: 1.1em;
+    border: 2px solid #000000;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+  }
+
+  .btn:hover{
+    background-color: #000000;
+    color: var(--background);
+  }
+
+  span{
+    background: #000000;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  #menu{
+    color: #000000;
+    font-size: 3em;
+    display: none;
+  }
+
+  section{
+    min-height: 100vh;
+    padding: 5% 15%;
+  }
+
+  #home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    color: #000000;
+  }
+
+  #home img{
+    width: 18vw;
+    border-radius: 50%;
+    margin-top: 3em;
+  }
+
+  .info-box{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5em;
+    max-width: 600px;
+  }
+  .info-box h1{
+    font-size: 5em;
+    font-weight: 500;
+  }
+  .info-box h3{
+    opacity: 2em;
+    font-weight: 400;
+  }
+
+  .info-box p{
+    opacity: 0.7;
+  }
+
+  ::-webkit-scrollbar{
+    width: 20px;
+    background-color: var(--background);
+  }
+
+  ::-webkit-scrollbar-thumb{
+    background: linear-gradient(to bottom, #000000 , #868686);
+  }
+
+  #about{
+    background-color: var(--second-background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5em;
+  }
+
+  #about img{
+    width: 20vw;
+    border-radius: 1em;
+  }
+
+  .about-box{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 2em;
+  }
+
+  .about-box h1{
+    font-size: 5em;
+  }
+  .about-box p{
+    color: #000000;
+    opacity: 0.8;
+  }
+
+  .skills{
+    display: flex;
+    text-align: left;
+    gap: 10em;
+  }
+
+  .skills ul{
+    font-size: 1.3em;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    color: #000000;
+    opacity: 0.8;
+    align-items: baseline;
+  }
+
+  .skills ul li span{
+    display: flex;
+    gap: 0.5em;
+    font-size: 1.2em;
+    transition: 0.3s ease-in-out;
+  }
+
+  .skills ul li:hover{
+    transform: translate(10px);
+  }
+
+  .skills ul li i{
+    font-size: 1.2em;
+  }
+
+  .about-box h2{
+    font-size: 2.5em;
+  }
+
+  #projects {
+    background-color: var(--second-background);
+    color: #000000;
+    padding: 5em 0;
+    text-align: center;
+  }
+  
+  .projects-header h1 {
+    font-size: 4em;
+    margin-bottom: 1.5em;
+    font-weight: 500;
+  }
+  
+  .projects-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+  }
+  
+  .project-box {
+    background-color: #ffffff;
+    padding: 2em;
+    border-radius: 1em;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .project-box:hover {
+    transform: translateY(-10px);
+  }
+  
+  .project-box h2 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+  }
+  
+  .project-box p {
+    font-size: 1.2em;
+    margin-bottom: 1.5em;
+    opacity: 0.8;
+  }
+  
+  .project-box .btn {
+    padding: 0.7em 1.5em;
+    color: #000000;
+    font-weight: 500;
+    border: 2px solid #000000;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .project-box .btn:hover {
+    background-color: #000000;
+    color: var(--background);
+  }
+
+  #experience {
+    background-color: var(--second-background);
+    color: #000000;
+    padding: 5em 0;
+    text-align: center;
+  }
+  
+  .experience-header h1 {
+    font-size: 4em;
+    margin-bottom: 1.5em;
+    font-weight: 500;
+  }
+  
+  .experience-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+  }
+  
+  .experience-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em;
+    border-radius: 1em;
+  }
+
+  .experience-details {
+    flex-basis: 50%;
+    text-align: left;
+  }
+  
+  .experience-box h2 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+  }
+  
+  .experience-box h3 {
+    font-size: 2em;
+    margin-bottom: 0.3em;
+    opacity: 0.8;
+  }
+
+  .experience-box h4{
+    font-size: 1.2em;
+    margin-top: 0.5em;
+  }
+  
+  .duration-location {
+    font-size: 1.2em;
+    font-style: italic;
+    margin-bottom: 1em;
+    display: block;
+    color: #000000;
+    opacity: 0.8;
+  }
+  
+  .experience-box p {
+    font-size: 1em;
+    opacity: 0.8;
+  }
+  
+  .experience-logo {
+    flex-basis: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .experience-logo img {
+    width: 200px;
+    height: auto;
+    border-radius: 0.5em;
+  }
+
+  #education {
+    background-color: #ffffff;
+  }
+  
+  .header {
+    text-align: center;
+    font-size: 5em;
+    margin: 0.5em 0;
+  }
+  
+  .education-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2em;
+  }
+  
+  .box {
+    border: 3px solid #ffffff;
+    border-radius: 0.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    align-items: flex-start;
+    overflow: hidden;
+    object-fit: cover;
+    padding: 2em;
+    color: #000000;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    min-height: 400px; 
+  }
+  
+  .box:hover {
+    border: 3px solid #000000;
+  }
+  
+  .box h1 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+    width: 100%;
+  }
+  
+  .box h2 {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    width: 100%;
+  }
+  
+  .box p {
+    opacity: 0.8;
+    line-height: 1.5;
+    width: 100%;
+    flex-grow: 1;
+  }
+  
+  .box img {
+    min-width: 100px;
+    max-width: 200px;
+    border-radius: 0.5em;
+    align-self: center;
+  }
+
+  #contact{
+    background-color: #ffffff;
+  }
+
+  form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+  }
+
+  form .input-box{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    gap: 1em;
+  }
+
+  .input-box span{
+    font-size: 1.5em;;
+  }
+
+  form input{
+    font-size: 1.3em;
+    padding: 1em 5em;
+    border-radius: 0.5em;
+    border: none;
+    outline: none;
+  }
+
+  form input:focus{
+    background-color: #000000;
+  }
+
+  footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10em;
+    bottom: 0;
+    background-color: #ffffff;
+    width: 100%;
+    padding: 5em 15%;
+  }
+  .col-left{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+  .col-box{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+  }
+  .col-box i{
+    font-size: 2em;
+  }
+  .col-box span{
+    font-size: 1.2em;
+  }
+  .col-right{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    color: #000000;
+    max-width: 500px;
+  }
+  .col-right span{
+    font-size: 1.3em;
+  }
+  .col-right .social-icons{
+    display: flex;
+    align-items: baseline;
+    justify-content: left;
+    gap: 1em;
+  }
+  .col-right .social-icons i{
+    font-size: 2em;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    color: #000000;
+  }
+  .social-icons i:hover{
+    color: rgb(0, 0, 0);
+  }
+
+  @media(max-width:968px){
+    section{
+      padding: 8em 15%;
+    }
+    .nav-socials {
+      display: none;
+    }
+    #menu{
+      display: block;
+      cursor: pointer; 
+    }
+    .links{
+      position: absolute;
+      top: 100%;
+      width: 100%;
+      right: 0;
+      padding: 1em 3em;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      background: rgba(15, 15, 15, 0.8);
+      display: none;
+    }
+    .links a{
+      margin: 2em;
+      display: block;
+      font-size: 1.5em;
+      color: #ffffff;
+    }
+    .links.active{
+      display: block;
+    }
+    #home h1{
+      font-size: 4em;
+    }
+    #home h3{
+      font-size: 2em;
+    }
+    #home img{
+      width: 24vw;
+    }
+
+    #about{
+      flex-direction: column;
+    }
+    #about img{
+      width: 32vw;
+    }
+    #about h1{
+      font-size: 3em;
+    }
+    #about ul{
+      font-size: 1em;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .experience-box {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .experience-logo {
+      margin-top: 1em;
+      flex-basis: auto;
+    }
+
+    .experience-logo img {
+      width: 120px;
+    }
+
+    #home h1 {
+      font-size: 2.5em;
+    }
+
+    #home h3 {
+      font-size: 1.4em;
+    }
+
+    #home img {
+      width: 28vw;
+    }
+
+    #about .skills {
+      gap: 2.5em;
+    }
+
+    #experience h1{
+      font-size: 1.8em;
+    }
+
+    #projects h1{
+      font-size: 1.8em;
+    }
+
+    #contact .header {
+      font-size: 2.7em;
+    }
+
+    #contact .input-box span {
+      font-size: 1.1em;
+    }
+
+    .input-box input {
+      padding: 0.5em 1em;
+    }
+
+    footer {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    section {
+      padding: 6em 10%;
+    }
+
+    .nav-socials {
+      display: none;
+    }
+
+    #menu {
+      display: block;
+      cursor: pointer;
+    }
+
+    .links {
+      position: absolute;
+      top: 100%; 
+      left: 0;
+      width: 100vw;
+      padding: 1em 0;
+      color: #ffffff;
+      background-color: rgba(15, 15, 15, 0.8);
+      display: none;
+      flex-direction: column;
+      text-align: center;
+      z-index: 999;
+      overflow-x: hidden;
+    }
+
+    .links a {
+      margin: 1.5em 0;
+      display: block;
+      font-size: 1.2em;
+      color: #fff;
+    }
+
+    .links.active {
+      display: block;
+      background: rgba(15, 15, 15, 0.8);
+    }
+
+    body.dark-mode .links {
+      background-color: rgba(33, 33, 33, 0.9);
+    }
+
+    body.dark-mode {
+      background-color: #000;
+      color: #fff;
+    }
+
+    .experience-box, #about, #contact, footer, .links {
+      background-color: transparent;
+    }
+
+    .input-box input {
+      background-color: #fff;
+      color: #000;
+    }
+
+    #education .header{
+      font-size: 4em;
+    }
+
+    footer {
+      color: #fff;
+    }
+  }
