@@ -30,121 +30,296 @@
     </header>
 
     <section id="introduction">
+        <div class="projects-header">
+            <h1>Introduction</h1>
+        </div>
+
+        <div class="projects-container">
+            <div class="project-box introduction">
+                <p class="intro-lede">
+                    Recent public, academic, and industry interest in AI agents reflects a broader shift in system
+                    capabilities—
+                    from rational agents operating over explicit models to general-purpose <em>language agents</em> that
+                    coordinate tools
+                    and learn from data. Following the launch of large-scale generative models, agent design moved
+                    beyond rule-bound
+                    settings toward more flexible, learning-driven architectures that adapt to context.
+                </p>
+
+                <!-- Now & Then -->
+                <div class="now-then">
+                    <h3>Now & Then</h3>
+                    <div class="nt-timeline">
+                        <div class="nt-line" aria-hidden="true"></div>
+
+                        <div class="nt-item left">
+                            <div class="nt-year">1992</div>
+                            <div class="quote-bubble">
+                                <p>“Agent-based computing (ABC) is likely to be the <strong>next significant
+                                        breakthrough</strong> in software development.”</p>
+                                <small>— Sargent (1992) · via
+                                    <a class="source-link" href="https://doi.org/10.1017/S0269888900008122"
+                                        target="_blank" rel="noopener">Wooldridge &amp; Jennings (1995)</a>
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="nt-item right">
+                            <div class="nt-year">1995</div>
+                            <div class="quote-bubble">
+                                <p>“[…] agent technology is, at the time of writing, one of the <strong>most active
+                                        areas of research</strong> in AI and computer science generally.”</p>
+                                <small>— <a class="source-link" href="https://doi.org/10.1017/S0269888900008122"
+                                        target="_blank" rel="noopener">Wooldridge &amp; Jennings (1995)</a></small>
+                            </div>
+                        </div>
+
+                        <div class="nt-item left">
+                            <div class="nt-year">2025</div>
+                            <div class="quote-bubble">
+                                <p>“AI Agents are <strong>revolutionizing</strong> the software development life cycle.”
+                                </p>
+                                <small>— <a class="source-link"
+                                        href="https://thenewstack.io/ai-agents-are-finally-starting-to-revolutionize-the-software-development-lifecycle/"
+                                        target="_blank" rel="noopener">The New Stack (Sayers, 2025)</a></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="intro-sep" aria-hidden="true" />
+
+                <p class="section-lede transition-note">
+                    Agents are not a new idea; their prominence today reflects renewed feasibility rather than novelty.
+                    What has changed is the substrate: large language models, tool-augmented execution, and scalable
+                    memory
+                    make long-standing agent designs practical at last.
+                </p>
+
+                <!-- Vision 1995 -->
+                <div class="info-vision">
+                    <h3>Vision of “Information Agents” (1995)</h3>
+                    <div class="section-split iv-grid">
+                        <figure class="iv-figure reveal">
+                            <div class="quote-bubble">
+                                <p class="dimmed">“[…] access to at least one, and potentially <strong>many information
+                                        sources</strong>, … return with an appropriate technical report […]”</p>
+                                <small>— <a class="source-link" href="https://doi.org/10.1017/S0269888900008122"
+                                        target="_blank">Wooldridge &amp; Jennings (1995)</a></small>
+                            </div>
+                        </figure>
+                        <div class="iv-text">
+                            <p class="section-lede">In the mid-1990s, researchers outlined “information agents” …
+                                anticipates today’s language-agent architectures.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deep Research -->
+                <div class="deep-research" id="deep-research">
+                    <h3>“Deep Research” (2025)</h3>
+                    <div class="section-split dr-grid">
+                        <div class="dr-points reveal">
+                            <p class="section-lede">Contemporary research agents operationalize the 1995 vision…</p>
+                            <ul>
+                                <li><strong>Exactly the workflow Wooldridge &amp; Jennings imagined</strong>—nearly
+                                    three decades later.</li>
+                                <li><strong>LLM + agentic framework</strong> guide tool use.</li>
+                                <li>Trace back to <strong>WebGPT</strong> (Nakano et al., 2021): <a class="source-link"
+                                        href="https://arxiv.org/abs/2112.09332" target="_blank">arXiv:2112.09332</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <figure class="dr-figure reveal">
+                            <img class="zoomable" src="images/1/deep_research_example.png"
+                                alt="Deep Research example output" />
+                            <figcaption>Web-augmented research assistant producing a sourced answer.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <hr class="intro-sep" aria-hidden="true" />
+
+                <!-- What is an Agent -->
+                <div class="agent-mini">
+                    <h3>What is an Agent?</h3>
+                    <p class="section-lede">An agent <em>perceives</em> and <em>acts</em> in an environment …</p>
+                    <div class="agent-explain">
+                        <div class="agent-left">
+                            <div class="agent-diagram">
+                                <div class="diagram-wrap">
+                                    <img class="diagram" src="images/1/russelnorvig21.png"
+                                        alt="Perceive → Think → Act loop" />
+                                    <!-- Hotspot buttons (JS handles interactions) -->
+                                    <button class="hotspot hs-perceive">Perceive</button>
+                                    <button class="hotspot hs-think">Think</button>
+                                    <button class="hotspot hs-act">Act</button>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="agent-points">
+                            <li><strong>Perceive → Act</strong>: anything that senses and acts.</li>
+                            <li><strong>Rationality</strong>: maximize expected performance.</li>
+                            <li><strong>Memory</strong>: depends on sequence of percepts.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="intro-sep" aria-hidden="true" />
+
+                <!-- Inside LM Agent -->
+                <div class="lm-agent reveal" id="lm-agent">
+                    <h3>Inside a Language Agent</h3>
+                    <p class="section-lede">Now that we know what a rational agent is … the LM carries out goal-directed
+                        behavior—while still being just a next-token predictor.</p>
+                    <div class="lm-grid">
+                        <div class="diagram-block">
+                            <!-- SVG diagram is here -->
+                        </div>
+                        <div class="explain" id="lmExplain">
+                            <div class="pane show" data-for="pretrain">
+                                <h4>Pretraining</h4>
+                                <p>Optimize log-likelihood of text …</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="intro-sep" aria-hidden="true" />
+
+                <!-- Contrast -->
+                <div class="contrast-agents reveal">
+                    <h3>From Rational → Language Agents</h3>
+                    <div class="contrast-matrix">
+                        <div class="matrix-head">
+                            <div class="th">Rational (classic)</div>
+                            <div class="th">Language (LLM-based)</div>
+                        </div>
+                        <div class="row">
+                            <div class="cell">
+                                <div class="k">Percepts/Actions</div>
+                                <div class="v">physical sensors</div>
+                            </div>
+                            <div class="cell">
+                                <div class="k">Percepts/Actions</div>
+                                <div class="v">text tokens & JSON calls</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="react-loop">
-        <div class="project-box">
-            <h1>Lets see how ReAct and Reflexion handles this query
-                Prompt: "What is the capital of the country where Eiffel tower is located?"</h1>
-            <h2>ReAct Loop Demonstration</h2>
-            <p>Reasoning and Acting in Language Models</p>
+    <script>
+        // Load introduction partial into the introduction section
+        (async function loadIntroduction() {
+            try {
+                const res = await fetch('./introduction.html', { cache: 'no-store' });
+                if (!res.ok) throw new Error('Failed to load introduction');
+                const html = await res.text();
+                const container = document.getElementById('introduction');
+                container.innerHTML = html;
 
-            <div class="controls">
-                <button class="btn" onclick="startAnimation()">Start Animation</button>
-                <button class="btn" onclick="resetAnimation()">Reset</button>
+                // Activate any <script> tags in the loaded partial (innerHTML doesn't execute scripts)
+                const scripts = container.querySelectorAll('script');
+                for (const oldScript of scripts) {
+                    const newScript = document.createElement('script');
+                    // Copy attributes (e.g., src, type)
+                    for (const attr of oldScript.attributes) {
+                        newScript.setAttribute(attr.name, attr.value);
+                    }
+                    // Inline script content
+                    if (!newScript.src) {
+                        newScript.textContent = oldScript.textContent;
+                    }
+                    oldScript.replaceWith(newScript);
+                }
+            } catch (err) {
+                console.error(err);
+                const container = document.getElementById('introduction');
+                container.innerHTML = '<div class="project-box"><h2>Introduction</h2><p>Failed to load content. Please serve this site over HTTP (e.g., Live Server) due to browser restrictions on file URLs.</p></div>';
+            }
+        })();
+    </script>
+
+    <section id="agents">
+        <div class="projects-header">
+            <h1>How AI Agents Think and Act</h1>
+        </div>
+
+        <div class="projects-container">
+            <!-- ReAct -->
+            <div class="project-box react-section">
+                <h2>ReAct: Reasoning + Acting</h2>
+                <p style="text-align:center; font-style:italic;">
+                    "What is the capital of the country where the Eiffel Tower is located?"
+                </p>
+                <div class="controls">
+                    <button class="btn" onclick="startReactAnimation()">Start ReAct</button>
+                    <button class="btn" onclick="resetReact()">Reset</button>
+                </div>
+
+                <div id="reactLoopContainer"></div>
+                <div class="final-answer" id="reactFinalAnswer">Final Output: Paris</div>
             </div>
 
-            <div class="react-content">
-                <div id="loopContainer"></div>
+            <!-- Reflexion -->
+            <div class="project-box reflexion-section">
+                <h2>Reflexion: Learning from Mistakes</h2>
+                <p style="text-align:center; font-style:italic;">
+                    "What is the capital of the country where the Eiffel Tower is located?"
+                </p>
+                <div class="controls">
+                    <button class="btn" onclick="startReflexionAnimation()">Start Reflexion</button>
+                    <button class="btn" onclick="resetReflexion()">Reset</button>
+                </div>
 
-                <div class="final-answer" id="finalAnswer">
-                    Final Output: Paris
+                <div id="reflexionLoopContainer"></div>
+                <div class="final-answer" id="reflexionFinalAnswer">
+                    Final Output: "Paris" (Correct Answer)
                 </div>
             </div>
         </div>
 
         <style>
-            /* Only ReAct-specific additions, reusing your global CSS */
-            #react-loop .controls {
-                margin: 2em 0;
-                display: flex;
-                justify-content: center;
-                gap: 1em;
-            }
-
-            #react-loop .iteration {
+            /* Scoped additions so they don't mess with your global CSS */
+            #agents .iteration {
+                background: var(--second-background);
                 border: 1px solid #ddd;
                 border-radius: 0.5em;
                 margin: 1.5em 0;
                 padding: 1em;
-                background: #f8f9fa;
                 opacity: 0;
                 transform: translateY(20px);
                 transition: all 0.5s ease;
             }
 
-            #react-loop .iteration.show {
+            #agents .iteration.show {
                 opacity: 1;
                 transform: translateY(0);
             }
 
-            #react-loop .iteration-header {
-                display: flex;
-                align-items: center;
-                gap: 1em;
-                font-weight: bold;
-                margin-bottom: 0.5em;
-            }
-
-            #react-loop .iteration-number {
-                width: 36px;
-                height: 36px;
-                border-radius: 50%;
-                background: #000;
-                color: #fff;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 14px;
-            }
-
-            #react-loop .step {
-                border-left: 3px solid #000;
-                padding: 0.8em 1em;
-                margin: 1em 0;
+            #agents .step {
                 background: #fff;
+                border-left: 4px solid #000;
+                padding: 0.8em 1em;
+                margin: 0.8em 0;
+                border-radius: 0.3em;
                 opacity: 0;
                 transform: translateX(-20px);
                 transition: all 0.4s ease;
             }
 
-            #react-loop .step.show {
+            #agents .step.show {
                 opacity: 1;
                 transform: translateX(0);
             }
 
-            #react-loop .decision-box {
-                background: #fff3cd;
-                border: 1px solid #ffeaa7;
-                padding: 1em;
-                margin: 1em 0;
-                text-align: center;
-                font-weight: 500;
-                opacity: 0;
-                transition: all 0.3s ease;
-            }
-
-            #react-loop .decision-box.show {
-                opacity: 1;
-            }
-
-            #react-loop .arrow {
-                text-align: center;
-                font-size: 1.2em;
-                margin: 0.5em 0;
-                opacity: 0;
-                transition: opacity 0.3s ease;
-            }
-
-            #react-loop .arrow.show {
-                opacity: 1;
-            }
-
-            #react-loop .final-answer {
-                margin-top: 2em;
+            #agents .final-answer {
+                margin-top: 1.5em;
                 padding: 1.2em;
                 text-align: center;
-                font-size: 1.2em;
                 font-weight: bold;
                 border: 2px solid #28a745;
                 border-radius: 0.5em;
@@ -154,30 +329,30 @@
                 transition: transform 0.5s ease;
             }
 
-            #react-loop .final-answer.show {
+            #agents .final-answer.show {
                 transform: scale(1);
             }
 
-            #react-loop .thinking-dots {
+            #agents .thinking-dots {
                 display: inline-block;
                 margin-left: 10px;
             }
 
-            #react-loop .dot {
-                display: inline-block;
+            #agents .dot {
                 width: 6px;
                 height: 6px;
                 border-radius: 50%;
                 background: #000;
+                display: inline-block;
                 margin: 0 2px;
                 animation: thinking 1.4s infinite both;
             }
 
-            #react-loop .dot:nth-child(2) {
+            #agents .dot:nth-child(2) {
                 animation-delay: 0.2s;
             }
 
-            #react-loop .dot:nth-child(3) {
+            #agents .dot:nth-child(3) {
                 animation-delay: 0.4s;
             }
 
@@ -198,10 +373,13 @@
         </style>
 
         <script>
-            let isAnimating = false;
-            const iterationData = [
+            // Shared helper
+            function sleep(ms) { return new Promise(res => setTimeout(res, ms)); }
+
+            // --- ReAct ---
+            let isReactAnimating = false;
+            const reactData = [
                 {
-                    number: 1,
                     title: "First Iteration",
                     steps: [
                         "Input: What is the capital of the country where the Eiffel Tower is located?",
@@ -211,7 +389,6 @@
                     ]
                 },
                 {
-                    number: 2,
                     title: "Second Iteration",
                     steps: [
                         "Input (with observation): Eiffel Tower is in France.",
@@ -221,7 +398,6 @@
                     ]
                 },
                 {
-                    number: 3,
                     title: "Third Iteration",
                     steps: [
                         "Input (full context): Eiffel Tower is in France. Capital of France?",
@@ -230,269 +406,48 @@
                 }
             ];
 
-            function createIteration(data) {
-                const div = document.createElement("div");
-                div.className = "iteration";
-                div.innerHTML = `
-        <div class="iteration-header">
-          <div class="iteration-number">${data.number}</div>
-          <div>${data.title}</div>
-        </div>
-        <div class="iteration-content" id="content-${data.number}"></div>
-      `;
-                return div;
-            }
-
-            function createStep(content, index) {
-                const div = document.createElement("div");
-                div.className = "step";
-                div.innerHTML = `<strong>Step ${index}:</strong> ${content}`;
-                return div;
-            }
-
-            function createDecisionBox(content) {
-                const div = document.createElement("div");
-                div.className = "decision-box";
-                div.textContent = content;
-                return div;
-            }
-
-            function createArrow() {
-                const div = document.createElement("div");
-                div.className = "arrow";
-                div.textContent = "↓";
-                return div;
-            }
-
-            async function startAnimation() {
-                if (isAnimating) return;
-                isAnimating = true;
-                document.querySelectorAll("#react-loop .btn")[0].disabled = true;
-
-                const container = document.getElementById("loopContainer");
+            async function startReactAnimation() {
+                if (isReactAnimating) return;
+                isReactAnimating = true;
+                const container = document.getElementById("reactLoopContainer");
                 container.innerHTML = "";
-                document.getElementById("finalAnswer").classList.remove("show");
+                document.getElementById("reactFinalAnswer").classList.remove("show");
+                for (const iter of reactData) {
+                    const div = document.createElement("div");
+                    div.className = "iteration";
+                    div.innerHTML = `<h3>${iter.title}</h3>`;
+                    container.appendChild(div);
+                    await sleep(300); div.classList.add("show");
+                    for (const [i, step] of iter.steps.entries()) {
+                        const stepDiv = document.createElement("div");
+                        stepDiv.className = "step";
+                        stepDiv.innerHTML = `<strong>Step ${i + 1}:</strong> ${step}`;
+                        div.appendChild(stepDiv);
+                        await sleep(300); stepDiv.classList.add("show");
 
-                for (let i = 0; i < iterationData.length; i++) {
-                    await animateIteration(i);
-                    await sleep(500);
-                }
-
-                await sleep(800);
-                document.getElementById("finalAnswer").classList.add("show");
-                isAnimating = false;
-                document.querySelectorAll("#react-loop .btn")[0].disabled = false;
-            }
-
-            async function animateIteration(index) {
-                const data = iterationData[index];
-                const iterationElement = createIteration(data);
-                document.getElementById("loopContainer").appendChild(iterationElement);
-
-                await sleep(200);
-                iterationElement.classList.add("show");
-                await sleep(400);
-
-                const contentElement = document.getElementById(`content-${data.number}`);
-
-                for (let i = 0; i < data.steps.length; i++) {
-                    const stepElement = createStep(data.steps[i], i + 1);
-                    contentElement.appendChild(stepElement);
-
-                    await sleep(300);
-                    stepElement.classList.add("show");
-
-                    if (data.steps[i].includes("LLM")) {
-                        const dots = document.createElement("div");
-                        dots.className = "thinking-dots";
-                        dots.innerHTML =
-                            '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
-                        stepElement.appendChild(dots);
-                        await sleep(2000);
-                        dots.remove();
+                        if (step.includes("LLM")) {
+                            const dots = document.createElement("div");
+                            dots.className = "thinking-dots";
+                            dots.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+                            stepDiv.appendChild(dots);
+                            await sleep(2000);
+                            dots.remove();
+                        }
                     }
-
-                    if (data.steps[i].includes("Action")) {
-                        const decision = createDecisionBox("Action detected → Execute");
-                        contentElement.appendChild(decision);
-                        await sleep(200);
-                        decision.classList.add("show");
-                    }
-                    if (data.steps[i].includes("Answer")) {
-                        const decision = createDecisionBox("Answer detected → Stop loop");
-                        contentElement.appendChild(decision);
-                        await sleep(200);
-                        decision.classList.add("show");
-                    }
-
-                    if (i < data.steps.length - 1) {
-                        const arrow = createArrow();
-                        contentElement.appendChild(arrow);
-                        await sleep(100);
-                        arrow.classList.add("show");
-                    }
-
-                    await sleep(600);
                 }
+                document.getElementById("reactFinalAnswer").classList.add("show");
+                isReactAnimating = false;
+            }
+            function resetReact() {
+                isReactAnimating = false;
+                document.getElementById("reactLoopContainer").innerHTML = "";
+                document.getElementById("reactFinalAnswer").classList.remove("show");
             }
 
-            function sleep(ms) {
-                return new Promise((res) => setTimeout(res, ms));
-            }
-            function resetAnimation() {
-                isAnimating = false;
-                document.querySelectorAll("#react-loop .btn")[0].disabled = false;
-                document.getElementById("loopContainer").innerHTML = "";
-                document.getElementById("finalAnswer").classList.remove("show");
-            }
-        </script>
-    </section>
-
-    <section id="reflexion-loop">
-        <div class="projects-header">
-            <h1>Reflexion Loop</h1>
-        </div>
-
-        <div class="projects-container">
-            <div class="project-box">
-                <h2>Reflexion Loop Demonstration</h2>
-                <p>Self-Reflective Reasoning with Verbal Feedback</p>
-
-                <div class="controls" style="margin:2em 0;display:flex;gap:1em;justify-content:center;">
-                    <button class="btn" onclick="startReflexion()">Start Animation</button>
-                    <button class="btn" onclick="resetReflexion()">Reset</button>
-                </div>
-
-                <div class="reflexion-content">
-                    <div class="iterations-container" id="reflexionContainer"></div>
-                    <div class="final-answer" id="reflexionFinal">
-                        Final Output: "Paris" (Correct Answer)
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <style>
-            /* Scoped additions */
-            #reflexion-loop .iterations-container {
-                display: flex;
-                flex-direction: column;
-                gap: 2em;
-                margin-top: 2em;
-            }
-
-            #reflexion-loop .iteration {
-                background: var(--second-background);
-                border: 1px solid #ddd;
-                border-radius: 0.8em;
-                padding: 1em;
-                opacity: 0;
-                transform: translateY(20px);
-                transition: all 0.5s ease;
-            }
-
-            #reflexion-loop .iteration.show {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            #reflexion-loop .iteration-header {
-                display: flex;
-                align-items: center;
-                gap: 1em;
-                font-weight: bold;
-                margin-bottom: 1em;
-            }
-
-            #reflexion-loop .iteration-number {
-                width: 36px;
-                height: 36px;
-                border-radius: 50%;
-                background: #e74c3c;
-                color: #fff;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            #reflexion-loop .step {
-                background: #fff;
-                border-left: 4px solid #000;
-                padding: 0.8em 1em;
-                margin: 0.8em 0;
-                border-radius: 0.3em;
-                opacity: 0;
-                transform: translateY(15px);
-                transition: all 0.4s ease;
-            }
-
-            #reflexion-loop .step.show {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            #reflexion-loop .final-answer {
-                margin-top: 2em;
-                padding: 1.2em;
-                text-align: center;
-                font-size: 1.2em;
-                font-weight: bold;
-                border: 2px solid #27ae60;
-                border-radius: 0.5em;
-                background: #d4edda;
-                color: #155724;
-                transform: scale(0);
-                transition: transform 0.5s ease;
-            }
-
-            #reflexion-loop .final-answer.show {
-                transform: scale(1);
-            }
-
-            #reflexion-loop .thinking-dots {
-                display: inline-block;
-                margin-left: 10px;
-            }
-
-            #reflexion-loop .dot {
-                display: inline-block;
-                width: 6px;
-                height: 6px;
-                border-radius: 50%;
-                background: #e74c3c;
-                margin: 0 2px;
-                animation: reflexion-thinking 1.4s infinite both;
-            }
-
-            #reflexion-loop .dot:nth-child(2) {
-                animation-delay: 0.2s;
-            }
-
-            #reflexion-loop .dot:nth-child(3) {
-                animation-delay: 0.4s;
-            }
-
-            @keyframes reflexion-thinking {
-
-                0%,
-                80%,
-                100% {
-                    opacity: 0.3;
-                    transform: scale(0.8);
-                }
-
-                40% {
-                    opacity: 1;
-                    transform: scale(1);
-                }
-            }
-        </style>
-
-        <script>
-            let reflexionAnimating = false;
+            // --- Reflexion ---
+            let isReflexionAnimating = false;
             const reflexionData = [
                 {
-                    number: 1,
                     title: "First Trial",
                     steps: [
                         "Task: INPUT → What country is the Eiffel Tower in and what is its capital?",
@@ -503,7 +458,6 @@
                     ]
                 },
                 {
-                    number: 2,
                     title: "Second Trial",
                     steps: [
                         "Task: INPUT → What country is the Eiffel Tower in and what is its capital?",
@@ -514,77 +468,46 @@
                 }
             ];
 
-            function reflexionIteration(data) {
-                const div = document.createElement("div");
-                div.className = "iteration";
-                div.innerHTML = `
-        <div class="iteration-header">
-          <div class="iteration-number">${data.number}</div>
-          <div>${data.title}</div>
-        </div>
-        <div class="iteration-content" id="reflexion-content-${data.number}"></div>
-      `;
-                return div;
-            }
-
-            function reflexionStep(content, index) {
-                const div = document.createElement("div");
-                div.className = "step";
-                div.innerHTML = `<strong>Step ${index}:</strong> ${content}`;
-                return div;
-            }
-
-            async function startReflexion() {
-                if (reflexionAnimating) return;
-                reflexionAnimating = true;
-                document.querySelector("#reflexion-loop .btn").disabled = true;
-
-                const container = document.getElementById("reflexionContainer");
+            async function startReflexionAnimation() {
+                if (isReflexionAnimating) return;
+                isReflexionAnimating = true;
+                const container = document.getElementById("reflexionLoopContainer");
                 container.innerHTML = "";
-                document.getElementById("reflexionFinal").classList.remove("show");
+                document.getElementById("reflexionFinalAnswer").classList.remove("show");
+                for (const iter of reflexionData) {
+                    const div = document.createElement("div");
+                    div.className = "iteration";
+                    div.innerHTML = `<h3>${iter.title}</h3>`;
+                    container.appendChild(div);
+                    await sleep(300); div.classList.add("show");
+                    for (const [i, step] of iter.steps.entries()) {
+                        const stepDiv = document.createElement("div");
+                        stepDiv.className = "step";
+                        stepDiv.innerHTML = `<strong>Step ${i + 1}:</strong> ${step}`;
+                        div.appendChild(stepDiv);
+                        await sleep(300); stepDiv.classList.add("show");
 
-                for (let i = 0; i < reflexionData.length; i++) {
-                    const iterationElement = reflexionIteration(reflexionData[i]);
-                    container.appendChild(iterationElement);
-                    await sleep(300);
-                    iterationElement.classList.add("show");
-
-                    const contentElement = document.getElementById(`reflexion-content-${reflexionData[i].number}`);
-                    for (let j = 0; j < reflexionData[i].steps.length; j++) {
-                        const stepElement = reflexionStep(reflexionData[i].steps[j], j + 1);
-                        contentElement.appendChild(stepElement);
-                        await sleep(300);
-                        stepElement.classList.add("show");
-
-                        if (reflexionData[i].steps[j].includes("Actor") || reflexionData[i].steps[j].includes("Reflection")) {
+                        if (step.includes("Actor") || step.includes("Reflection")) {
                             const dots = document.createElement("div");
                             dots.className = "thinking-dots";
                             dots.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
-                            stepElement.appendChild(dots);
+                            stepDiv.appendChild(dots);
                             await sleep(2000);
                             dots.remove();
                         }
                     }
-                    await sleep(500);
                 }
-
-                document.getElementById("reflexionFinal").classList.add("show");
-                reflexionAnimating = false;
-                document.querySelector("#reflexion-loop .btn").disabled = false;
+                document.getElementById("reflexionFinalAnswer").classList.add("show");
+                isReflexionAnimating = false;
             }
-
             function resetReflexion() {
-                reflexionAnimating = false;
-                document.querySelector("#reflexion-loop .btn").disabled = false;
-                document.getElementById("reflexionContainer").innerHTML = "";
-                document.getElementById("reflexionFinal").classList.remove("show");
-            }
-
-            function sleep(ms) {
-                return new Promise((res) => setTimeout(res, ms));
+                isReflexionAnimating = false;
+                document.getElementById("reflexionLoopContainer").innerHTML = "";
+                document.getElementById("reflexionFinalAnswer").classList.remove("show");
             }
         </script>
     </section>
+
 
 
     <section id="tool-usage">
@@ -727,7 +650,237 @@
 
 
     <section id="software_engineering">
+
+        <div class="container">
+            <div class="main-content">
+
+                <!-- Bug Localizer -->
+                <div class="content-section">
+                    <h2><i class="fas fa-bug"></i> Bug Localizer: The Perfect Example</h2>
+                    <p>Let's start with a concrete example that perfectly illustrates the power of AI agents in software
+                        engineering - the Bug Localizer.</p>
+                    <div class="quote">
+                        "What would take a human developer potentially hours of manual debugging, the AI agent
+                        accomplishes in minutes."
+                    </div>
+
+                    <div class="comparison">
+                        <div class="comparison-card">
+                            <h4><i class="fas fa-user-clock"></i> Traditional Debugging</h4>
+                            <ul>
+                                <li>Manual log reading</li>
+                                <li>Time-consuming process</li>
+                                <li>Error-prone approach</li>
+                                <li>Relies on intuition</li>
+                                <li>Limited context awareness</li>
+                            </ul>
+                        </div>
+                        <div class="comparison-card">
+                            <h4><i class="fas fa-robot"></i> AI Agent Debugging</h4>
+                            <ul>
+                                <li>Processes logs and code simultaneously</li>
+                                <li>Accesses entire repository</li>
+                                <li>Applies debugging heuristics</li>
+                                <li>Rule-based checks</li>
+                                <li>Comprehensive reporting</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <p>This isn't just about speed - it's about <span class="highlight">consistency and accuracy</span>.
+                        The agent doesn't get tired, doesn't overlook details, and doesn't carry cognitive biases that
+                        might lead us down the wrong debugging path.</p>
+                </div>
+
+                <!-- Framework -->
+                <div class="content-section">
+                    <h2><i class="fas fa-sitemap"></i> Framework: How It All Works</h2>
+                    <p>So how does this magic happen? Let's look at the underlying framework that makes AI agents so
+                        powerful in software engineering.</p>
+                    <div class="framework-image">
+                        <div class="framework-image-placeholder">
+                            <img src="framework.png" style="width: 40vw; min-width: 330px;"
+                                alt="reference framework diagram">
+                        </div>
+                    </div>
+
+                    <div class="framework-diagram">
+                        <div class="framework-step">
+                            <div class="step-icon"><i class="fas fa-eye"></i></div>
+                            <h4>Perception</h4>
+                            <p>Processing inputs from various sources</p>
+                        </div>
+                        <div class="framework-step">
+                            <div class="step-icon"><i class="fas fa-brain"></i></div>
+                            <h4>Reasoning</h4>
+                            <p>Analyzing information and making decisions</p>
+                        </div>
+                        <div class="framework-step">
+                            <div class="step-icon"><i class="fas fa-bolt"></i></div>
+                            <h4>Action</h4>
+                            <p>Executing tasks based on decisions</p>
+                        </div>
+                    </div>
+
+                    <p>What makes this framework particularly powerful is the <span class="highlight">feedback
+                            loop</span>. The agent can observe the results of its actions, learn from outcomes, and
+                        iteratively improve its approach - just like an experienced developer would.</p>
+                </div>
+
+                <!-- Perception -->
+                <div class="content-section">
+                    <h2><i class="fas fa-eye"></i> Perception: The Agent's Input System</h2>
+                    <p>Let's dive deeper into how AI agents perceive and process information in software engineering
+                        contexts.</p>
+                    <h3><i class="fas fa-code"></i> Multi-modal Input Processing</h3>
+                    <ul class="icon-list">
+                        <li><i class="fas fa-check-circle"></i> <strong>Code as text:</strong> Reading and understanding
+                            syntax, semantics, and structure</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Abstract Syntax Trees:</strong> Understanding
+                            hierarchical relationships</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Visual inputs:</strong> Interpreting UML
+                            diagrams and UI sketches</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Natural language:</strong> Processing
+                            requirements and documentation</li>
+                    </ul>
+
+                    <div class="code-visualization">
+                        <div class="code-visual">
+                            <h4><i class="fas fa-file-code"></i> Code as Text</h4>
+                            <div class="code-block">
+                                <span class="code-comment"># Calculate factorial of a number</span><br>
+                                <span class="code-keyword">def</span> <span
+                                    class="code-function">factorial</span>(n):<br>
+                                &nbsp;&nbsp;<span class="code-keyword">if</span> n == <span
+                                    class="code-number">0</span>:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> <span
+                                    class="code-number">1</span><br>
+                                &nbsp;&nbsp;<span class="code-keyword">else</span>:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> n * factorial(n-1)<br>
+                                <br>
+                                <span class="code-comment"># Print result</span><br>
+                                <span class="code-keyword">print</span>(<span class="code-string">"Factorial of 5
+                                    is:"</span>, factorial(<span class="code-number">5</span>))
+                            </div>
+                        </div>
+
+                        <div class="code-visual">
+                            <h4><i class="fas fa-project-diagram"></i> Abstract Syntax Tree</h4>
+                            <div class="syntax-tree">
+                                <div class="tree-node">
+                                    <div class="node-value">fn</div>
+                                    Function
+                                    <div class="tree-children">
+                                        <div class="tree-node">
+                                            <div class="node-value">id</div> factorial
+                                        </div>
+                                        <div class="tree-node">
+                                            <div class="node-value">p</div> Parameters
+                                            <div class="tree-children">
+                                                <div class="tree-node">
+                                                    <div class="node-value">n</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tree-node">
+                                            <div class="node-value">b</div> Body
+                                            <div class="tree-children">
+                                                <div class="tree-node">
+                                                    <div class="node-value">if</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p>The <span class="highlight">multi-modal nature of perception</span> is what makes these agents so
+                        powerful…</p>
+                </div>
+
+                <!-- Memory -->
+                <div class="content-section">
+                    <h2><i class="fas fa-brain"></i> Memory: Maintaining Context and Learning</h2>
+                    <p>Memory is what separates sophisticated AI agents from simple code generators…</p>
+                    <div class="memory-types">
+                        <div class="memory-card">
+                            <h4><i class="fas fa-history"></i> Short-term Memory</h4>
+                            <ul class="icon-list">
+                                <li><i class="fas fa-circle-notch"></i> Maintains context during development sessions
+                                </li>
+                                <li><i class="fas fa-circle-notch"></i> Tracks code changes in real-time</li>
+                            </ul>
+                        </div>
+                        <div class="memory-card">
+                            <h4><i class="fas fa-database"></i> Long-term Memory</h4>
+                            <ul class="icon-list">
+                                <li><i class="fas fa-circle-notch"></i> Learns from past experiences</li>
+                                <li><i class="fas fa-circle-notch"></i> Tracks project history and evolution</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cline -->
+                <div id="cline" class="content-section">
+                    <h2><i class="fas fa-code"></i> Cline-CoPilot in Action</h2>
+                    <p>Cline is an AI agent specifically designed for software engineering tasks…</p>
+                    <h3><i class="fas fa-cogs"></i> Cline's Web Development Process</h3>
+                    <ol class="icon-list">
+                        <li><i class="fas fa-arrow-right"></i> Initialization Protocol</li>
+                        <li><i class="fas fa-arrow-right"></i> Design Analysis</li>
+                        <li><i class="fas fa-arrow-right"></i> Component Implementation</li>
+                        <li><i class="fas fa-arrow-right"></i> Accessibility Integration</li>
+                    </ol>
+                    <div class="comparison">
+                        <div class="comparison-card">
+                            <h4><i class="fas fa-paint-brush"></i> Design Phase</h4>
+                            <ul>
+                                <li>References designBrief.md</li>
+                                <li>Applies brandContext.md</li>
+                            </ul>
+                        </div>
+                        <div class="comparison-card">
+                            <h4><i class="fas fa-code"></i> Development Phase</h4>
+                            <ul>
+                                <li>Implements componentLibrary.md</li>
+                                <li>Ensures accessibility compliance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Evaluation -->
+                <div class="content-section">
+                    <h2><i class="fas fa-clipboard-check"></i> Evaluating AI Coding Agents</h2>
+                    <p>Evaluating a web development AI coding agent is a complex task…</p>
+                    <h3><i class="fas fa-chart-line"></i> Core Performance Metrics</h3>
+                    <div class="evaluation-grid">
+                        <div class="evaluation-card">
+                            <h4><i class="fas fa-check-double"></i> Accuracy & Correctness</h4>
+                            <ul>
+                                <li>Syntactic correctness</li>
+                                <li>Bug detection & fixes</li>
+                            </ul>
+                        </div>
+                        <div class="evaluation-card">
+                            <h4><i class="fas fa-tachometer-alt"></i> Efficiency & Optimization</h4>
+                            <ul>
+                                <li>Performance</li>
+                                <li>Resource usage</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </section>
+
+
 
     <section id="risks">
         <div class="projects-header">
@@ -873,14 +1026,22 @@
         </script>
     </section>
 
-
-
     <section id="about">
-        <img src="">
         <div class="info-box">
             <h1><span>Meet the Team</span></h1>
         </div>
+
+        <div class="skills">
+            <ul>
+                <li><span>Felix Kratzsch</span></li>
+                <li><span>Maximilian Krupop</span></li>
+                <li><span>Jarred Boere</span></li>
+                <li><span>Uday Kale</span></li>
+                <li><span>Jayesh Choudhari</span></li>
+            </ul>
+        </div>
     </section>
+
 
     <footer>
         <div class="col-left">
