@@ -154,6 +154,17 @@
                                     <button class="hotspot hs-perceive">Perceive</button>
                                     <button class="hotspot hs-think">Think</button>
                                     <button class="hotspot hs-act">Act</button>
+                                    <div class="callout" id="hs-perceive">
+                                        Sensors and inputs: camera, microphone, web-API responses, or a text prompt for
+                                        an LLM.
+                                    </div>
+                                    <div class="callout" id="hs-think">
+                                        The agent function maps percept history to actions. Rationality = maximize
+                                        performance.
+                                    </div>
+                                    <div class="callout" id="hs-act">
+                                        Outputs: motors, screens, clicks, or an LLM’s generated text/function call.
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -176,10 +187,23 @@
                         <div class="diagram-block">
                             <!-- SVG diagram is here -->
                         </div>
+                        <div class="legend">
+                            <button class="chip sel" data-mode="pretrain" aria-pressed="true">Pretraining</button>
+                            <button class="chip" data-mode="finetune">Finetuning</button>
+                            <button class="chip" data-mode="framework">Framework</button>
+                        </div>
                         <div class="explain" id="lmExplain">
                             <div class="pane show" data-for="pretrain">
                                 <h4>Pretraining</h4>
                                 <p>Optimize log-likelihood of text …</p>
+                            </div>
+                            <div class="pane" data-for="finetune">
+                                <h4>Finetuning</h4>
+                                <p>Instruction tuning and RLHF …</p>
+                            </div>
+                            <div class="pane" data-for="framework">
+                                <h4>Framework</h4>
+                                <p>Tools, memory, planner …</p>
                             </div>
                         </div>
                     </div>
@@ -212,34 +236,138 @@
     </section>
 
     <script>
-        // Load introduction partial into the introduction section
-        (async function loadIntroduction() {
-            try {
-                const res = await fetch('./introduction.html', { cache: 'no-store' });
-                if (!res.ok) throw new Error('Failed to load introduction');
-                const html = await res.text();
-                const container = document.getElementById('introduction');
-                container.innerHTML = html;
-
-                // Activate any <script> tags in the loaded partial (innerHTML doesn't execute scripts)
-                const scripts = container.querySelectorAll('script');
-                for (const oldScript of scripts) {
-                    const newScript = document.createElement('script');
-                    // Copy attributes (e.g., src, type)
-                    for (const attr of oldScript.attributes) {
-                        newScript.setAttribute(attr.name, attr.value);
+        // Now & Then (compact): Fade-in on scroll
+        (function () {
+            const items = document.querySelectorAll('.now-then .nt-item');
+            const reveal = (entries, obs) => {
+                for (const entry of entries) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                        obs.unobserve(entry.target);
                     }
-                    // Inline script content
-                    if (!newScript.src) {
-                        newScript.textContent = oldScript.textContent;
-                    }
-                    oldScript.replaceWith(newScript);
                 }
-            } catch (err) {
-                console.error(err);
-                const container = document.getElementById('introduction');
-                container.innerHTML = '<div class="project-box"><h2>Introduction</h2><p>Failed to load content. Please serve this site over HTTP (e.g., Live Server) due to browser restrictions on file URLs.</p></div>';
+            };
+            if ('IntersectionObserver' in window) {
+                const io = new IntersectionObserver(reveal, { root: null, threshold: 0.15 });
+                items.forEach(el => io.observe(el));
+            } else {
+                items.forEach(el => el.classList.add('show'));
             }
+        })();
+
+        // LM inner workings controls
+        (function () {
+            const root = document.getElementById('lm-agent');
+            if (!root) return;
+            const chips = root.querySelectorAll('.legend .chip');
+            const panes = root.querySelectorAll('.explain .pane');
+            const order = ['pretrain', 'finetune', 'framework'];
+            let userLocked = false;
+            const select = (mode) => {
+                chips.forEach(c => {
+                    const sel = c.getAttribute('data-mode') === mode;
+                    c.classList.toggle('sel', sel);
+                    c.setAttribute('aria-pressed', sel ? 'true' : 'false');
+                });
+                panes.forEach(p => p.classList.toggle('show', p.getAttribute('data-for') === mode));
+                root.setAttribute('data-mode', mode);
+                // CSS-driven highlights via mode-*
+                root.classList.remove('mode-pretrain', 'mode-finetune', 'mode-framework');
+                root.classList.add(`mode-${mode}`);
+            };
+            // Initialize to currently selected or default to pretrain
+            const initSel = Array.from(chips).find(c => c.classList.contains('sel'))?.getAttribute('data-mode') || 'pretrain';
+            select(initSel);
+            // Autoplay: cycle every 5s unless user clicks a chip
+            let idx = order.indexOf(initSel);
+            const tick = () => {
+                if (userLocked) return;
+                idx = (idx + 1) % order.length;
+                select(order[idx]);
+            };
+            const intervalId = setInterval(tick, 12000);
+            chips.forEach(ch => ch.addEventListener('click', () => {
+                userLocked = true; // freeze on user interaction
+                const mode = ch.getAttribute('data-mode');
+                select(mode);
+            }));
+        })();
+
+        // Generic reveal for new sections
+        (function () {
+            const items = document.querySelectorAll('.introduction .reveal');
+            if (!items.length) return;
+            const onReveal = (entries, obs) => {
+                for (const e of entries) {
+                    if (e.isIntersecting) { e.target.classList.add('show'); obs.unobserve(e.target); }
+                }
+            };
+            if ('IntersectionObserver' in window) {
+                const io = new IntersectionObserver(onReveal, { root: null, threshold: 0.15 });
+                items.forEach(el => io.observe(el));
+            } else {
+                items.forEach(el => el.classList.add('show'));
+            }
+        })();
+
+        // Lightbox for zoomable images in this section
+        (function () {
+            const imgs = document.querySelectorAll('.introduction img.zoomable');
+            if (!imgs.length) return;
+            const lb = document.createElement('div');
+            lb.className = 'img-lightbox';
+            lb.innerHTML = '<button class="lb-close" aria-label="Close">×</button><img alt="Expanded image" />';
+            document.querySelector('.project-box.introduction').appendChild(lb);
+            const lbImg = lb.querySelector('img');
+            const close = () => { lb.classList.remove('show'); lb.setAttribute('aria-hidden', 'true'); };
+            lb.addEventListener('click', (e) => { if (e.target === lb || e.target.classList.contains('lb-close')) close(); });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+            imgs.forEach(img => {
+                img.addEventListener('click', () => { lbImg.src = img.src; lb.classList.add('show'); lb.setAttribute('aria-hidden', 'false'); });
+            });
+        })();
+
+        // Agent diagram hotspots
+        (function () {
+            const container = document.querySelector('.agent-diagram');
+            if (!container) return;
+            const buttons = container.querySelectorAll('.hotspot');
+            const boxes = {
+                perceive: container.querySelector('#hs-perceive'),
+                think: container.querySelector('#hs-think'),
+                act: container.querySelector('#hs-act')
+            };
+            function closeAll() {
+                Object.values(boxes).forEach(b => b.classList.remove('show'));
+                buttons.forEach(b => b.setAttribute('aria-expanded', 'false'));
+            }
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = btn.classList.contains('hs-perceive') ? 'perceive' : btn.classList.contains('hs-think') ? 'think' : 'act';
+                    const box = boxes[id];
+                    const isOpen = box.classList.contains('show');
+                    closeAll();
+                    if (!isOpen) { box.classList.add('show'); btn.setAttribute('aria-expanded', 'true'); }
+                });
+            });
+            document.addEventListener('click', (e) => {
+                if (!container.contains(e.target)) closeAll();
+            });
+        })();
+
+        // Compare toggle
+        (function () {
+            const btn = document.getElementById('compareToggle');
+            const panels = document.getElementById('comparePanels');
+            if (!btn || !panels) return; // section replaced by contrast view
+            btn.addEventListener('click', () => {
+                const mode = panels.dataset.mode === 'classical' ? 'language' : 'classical';
+                panels.dataset.mode = mode;
+                btn.setAttribute('aria-pressed', String(mode === 'language'));
+                // Simple visual emphasis: swap order
+                if (mode === 'language') panels.style.gridTemplateColumns = '1fr 1.2fr';
+                else panels.style.gridTemplateColumns = '1.2fr 1fr';
+            });
         })();
     </script>
 
@@ -650,7 +778,9 @@
 
 
     <section id="software_engineering">
-
+        <div class="projects-header">
+            <h1>Software Engineering</h1>
+        </div>
         <div class="container">
             <div class="main-content">
 
@@ -699,10 +829,12 @@
                         powerful in software engineering.</p>
                     <div class="framework-image">
                         <div class="framework-image-placeholder">
-                            <img src="framework.png" style="width: 40vw; min-width: 330px;"
+                            <img src="images/4/framework.png" style="width: 40vw; min-width: 330px;"
                                 alt="reference framework diagram">
                         </div>
                     </div>
+                    <p class="framework-caption">Figure 1: Conceptual framework for AI agents in software engineering.
+                    </p>
 
                     <div class="framework-diagram">
                         <div class="framework-step">
