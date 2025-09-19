@@ -15,6 +15,7 @@
 
 <body>
     <aside class="sidebar">
+        <button class="hamburger" aria-label="Toggle Menu">☰</button>
         <nav>
             <ul class="links">
                 <li><a href="#introduction">Introduction</a></li>
@@ -30,6 +31,9 @@
     <div class="page-title">AI Agents</div>
 
     <section id="introduction">
+        <div class="projects-header">
+            <h1>Introduction</h1>
+        </div>
         <div class="project-box introduction">
             <p class="intro-lede">Recent public, academic, and industry interest in AI agents reflects a broader shift
                 in system capabilities—from rational agents operating over explicit models to general-purpose
@@ -1368,6 +1372,9 @@
     </section>
 
     <section id="react-loop">
+        <div class="projects-header">
+            <h1>LLM's for Acting</h1>
+        </div>
 
         <head>
             <meta charset="UTF-8">
@@ -2469,7 +2476,8 @@
                 “In the context of agentic LLMs, tool use refers to the model's ability
                 to interact with external tools, APIs, or functions to perform tasks it
                 cannot accomplish through language generation alone.”
-                <sup>Wooldridge & Jennings, 1995</sup>
+                <sup><a href="https://medium.com/@danushidk507/agentic-ai-iii-understanding-llm-parallelization-and-routing-toolcalling-and-function-calling-f42f5eef8485"
+                        class="reference" target="_blank">[1]</a></sup>
             </blockquote>
             <p><strong>Enables LLMs to:</strong></p>
             <ul>
@@ -2482,9 +2490,15 @@
         <div class="project-box">
             <h2>Why do LLMs need tools?</h2>
             <ul>
-                <li>LLMs struggle with arithmetic, dates, factual lookups <sup>Schick et al., 2023</sup>.</li>
-                <li>Toolformer demonstrates self-supervised tool usage <sup>Schick et al., 2023</sup>.</li>
-                <li>Benchmarks show strong improvements with calculators & retrieval <sup>Nakano et al., 2021</sup>.
+                <li>
+                    LLMs struggle with arithmetic, dates, factual lookups
+                </li>
+                <li>
+                    Toolformer demonstrates self-supervised tool usage
+                </li>
+                <li>
+                    Benchmarks show strong improvements with calculators & retrieval
+                    <sup><a href="https://arxiv.org/abs/2112.09332" class="reference" target="_blank">[2]</a></sup>
                 </li>
             </ul>
             <img src="images/3_new/03.png" alt="Performance graph" style="width:100%;border-radius:0.5em;" />
@@ -2511,7 +2525,10 @@
                 <li>Model generates text and inserts tool calls</li>
                 <li>Tool calls are executed; outputs appended</li>
                 <li>Model checks if tool calls improved prediction</li>
-                <li>Only useful interactions are retained for training <sup>Schick et al., 2023</sup></li>
+                <li>Only useful interactions are retained for training
+                    <sup><a href="https://proceedings.neurips.cc/paper_files/paper/2023/file/d842425e4bf79ba039352da0f658a906-Paper-Conference.pdf"
+                            class="reference" target="_blank">[3]</a></sup>
+                </li>
             </ol>
             <img src="images/3_new/01.png" alt="Learning process" style="width:100%;border-radius:0.5em;" />
         </div>
@@ -2542,9 +2559,27 @@
         <!-- Card 6 -->
         <div class="project-box">
             <h2>When tools are less effective</h2>
+
+            <h3>Tasks Where Tools Are Less Effective</h3>
             <ul style="text-align:left;">
                 <li>Machine translation, summarization, sentiment analysis</li>
-                <li>Tasks where base LLMs already outperform specialized tools <sup>OpenAI, 2023</sup></li>
+                <li>Tasks hard to solve by non-ML methods (unlike math or database queries)</li>
+                <li>Tasks where base LLMs already outperform specialized tools
+                    <sup><a href="https://openai.com/research/gpt-4" class="reference" target="_blank">[OpenAI,
+                            2023]</a></sup>
+                </li>
+            </ul>
+
+            <h3>Why Tools May Not Help Much</h3>
+            <ul style="text-align:left;">
+                <li>Tools for these tasks are often <strong>specialized neural LMs</strong> themselves</li>
+                <li>Specialized LMs may have:
+                    <ul>
+                        <li>Similar or smaller architectures compared to the base LLM</li>
+                        <li>Fewer training tokens → weaker general language understanding</li>
+                    </ul>
+                </li>
+                <li>Adding them as tools rarely improves quality over what the base LLM can already achieve</li>
             </ul>
         </div>
 
@@ -2874,6 +2909,97 @@
                 </div>
             </div>
 
+            <!-- Design vs Development Phase -->
+            <div class="content-section">
+                <h2><i class="fas fa-project-diagram"></i> Design vs Development Phases</h2>
+                <div class="comparison">
+                    <div class="comparison-card">
+                        <h4><i class="fas fa-pencil-ruler"></i> Design Phase</h4>
+                        <ul>
+                            <li>References <code>designBrief.md</code> for project scope</li>
+                            <li>Applies <code>brandContext.md</code> for visual identity</li>
+                            <li>Follows <code>styleGuide.md</code> for typography and colors</li>
+                            <li>Uses <code>layoutPatterns.md</code> for structural consistency</li>
+                            <li>Maintains <code>progress.md</code> for version tracking</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-card">
+                        <h4><i class="fas fa-code"></i> Development Phase</h4>
+                        <ul>
+                            <li>Implements <code>componentLibrary.md</code> patterns</li>
+                            <li>Ensures accessibility compliance</li>
+                            <li>Maintains responsive design principles</li>
+                            <li>Follows Gestalt design principles</li>
+                            <li>Updates documentation continuously</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Performance & Capabilities -->
+            <div class="content-section">
+                <h2><i class="fas fa-chart-pie"></i> Capabilities & Metrics</h2>
+
+                <h3>Core Performance Metrics</h3>
+                <div class="evaluation-grid">
+                    <div class="evaluation-card">
+                        <h4><i class="fas fa-check"></i> Accuracy & Correctness</h4>
+                        <ul>
+                            <li>Syntactic correctness</li>
+                            <li>Functional correctness</li>
+                            <li>Bug detection & fixes</li>
+                            <li>Regression prevention</li>
+                        </ul>
+                    </div>
+                    <div class="evaluation-card">
+                        <h4><i class="fas fa-bolt"></i> Efficiency & Optimization</h4>
+                        <ul>
+                            <li>Code quality</li>
+                            <li>Performance</li>
+                            <li>Resource usage</li>
+                            <li>Latency</li>
+                        </ul>
+                    </div>
+                    <div class="evaluation-card">
+                        <h4><i class="fas fa-layer-group"></i> Completeness & Coverage</h4>
+                        <ul>
+                            <li>Task completion rate</li>
+                            <li>Scope of capabilities</li>
+                            <li>Framework/library support</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Advanced Capabilities</h3>
+                <div class="evaluation-grid">
+                    <div class="evaluation-card">
+                        <h4><i class="fas fa-lightbulb"></i> Contextual Understanding</h4>
+                        <ul>
+                            <li>Codebase awareness</li>
+                            <li>Multi-turn & long-term memory</li>
+                            <li>Problem decomposition</li>
+                        </ul>
+                    </div>
+                    <div class="evaluation-card">
+                        <h4><i class="fas fa-tools"></i> Tool Use & Integration</h4>
+                        <ul>
+                            <li>API/tool invocation</li>
+                            <li>IDE integration</li>
+                            <li>Version control integration</li>
+                        </ul>
+                    </div>
+                    <div class="evaluation-card">
+                        <h4><i class="fas fa-chess"></i> Reasoning & Planning</h4>
+                        <ul>
+                            <li>Logical reasoning</li>
+                            <li>Error recovery</li>
+                            <li>Adaptability</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
     </div>
 
@@ -3040,38 +3166,6 @@
         </ul>
     </div>
 </section>
-
-
-<footer>
-    <div class="col-left">
-        <div class="col-box">
-            <span><i class='bx bxs-envelope'></i></span>
-            <span>
-                jboere01@gmail.com
-            </span>
-        </div>
-
-        <div class="col-box">
-            <span><i class='bx bxs-phone'></i></span>
-            <span>
-                +49 176 80431522
-            </span>
-        </div>
-    </div>
-    <div class="col-right">
-        <div class="social-icons">
-            <span>
-                <a href="https://www.linkedin.com/in/jarred-boere" target="_blank">
-                    <i class='bx bxl-linkedin-square'></i>
-                </a>
-            </span>
-            <span>
-                <a href="https://github.com/JazaB123" target="_blank">
-                    <i class='bx bxl-github'></i>
-                </a>
-            </span>
-        </div>
-</footer>
 
 <script src="script.js"></script>
 </body>
