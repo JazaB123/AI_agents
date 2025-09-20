@@ -35,11 +35,11 @@
             <h1>Introduction</h1>
         </div>
         <div class="project-box introduction">
-            <p class="intro-lede">Recent public, academic, and industry interest in AI agents reflects a broader shift
-                in system capabilities—from rational agents operating over explicit models to general-purpose
-                <em>language agents</em> that coordinate tools and learn from data. Following the launch of large-scale
-                generative models, agent design moved beyond rule-bound settings toward more flexible, learning-driven
-                architectures that adapt to context.
+            <p class="intro-lede">AI Agents are not a new idea. Already three decades ago people expected the technology
+                to have a large impact, which did not necessarily held true so far. However, following the launch of large-scale
+                generative models like the GPT-series, recently we have seen a resurgence of interest in the field. 
+                This invites a natural question: why so much renewed interest, and what, if anything, is fundamentally different
+                this time in the underlying technology? First, let us take a look at the past.
             </p>
 
             <!-- Now & Then: Compact Left→Right Timeline -->
@@ -87,11 +87,11 @@
                 </div>
             </div>
             <hr class="intro-sep" aria-hidden="true" />
-            <p class="section-lede transition-note">Agents are not a new idea; their prominence today reflects renewed
-                feasibility rather than novelty. What has changed is the substrate: large language models,
-                tool‑augmented execution, and scalable memory make long‑standing agent designs practical at last. This
-                invites a natural question—why so much renewed interest, and what, if anything, is fundamentally
-                different in the underlying technology?</p>
+            <p class="section-lede transition-note">While the promises sound similar to those from the 1990s,                
+                recent public, academic, and industry interest in AI agents does actually reflect a broader shift
+                in system capabilities: from rational agents operating over explicit models to general-purpose
+                <em>language agents</em> that coordinate tools and learn from data. Let us take a look at an example.
+            </p>
 
             <!-- Vision of “Information Agents” (1995) -->
             <div class="info-vision">
@@ -111,14 +111,21 @@
                         </div>
                     </figure>
                     <div class="iv-text">
-                        <p class="section-lede">In the mid‑1990s, researchers outlined “information agents” that could
+                        <p class="section-lede">In the mid-1990s, researchers outlined “information agents” that could
                             search across multiple sources, integrate results, and return useful answers. Tooling
                             constraints meant this remained largely aspirational then, but the design
-                            intuition—delegating web search, collation, and retrieval—anticipates today’s language‑agent
+                            intuition, delegating web search, collation, and retrieval, anticipates today's language-agent
                             architectures.</p>
                     </div>
                 </div>
             </div>
+
+            <p class="section-lede interlude" id="vision-to-deep" style="margin-top:2em;">
+                The early “information agent” concept stayed largely theoretical for decades because the ingredients
+                for flexible perception, planning, and tool integration were immature. But with the rise of large language models
+                (LLMs), agent design moved beyond rule-bound settings toward more flexible, learning-driven
+                architectures that adapt to context.
+            </p>
 
             <!-- “Deep Research” (2025) -->
             <div class="deep-research" id="deep-research">
@@ -147,7 +154,7 @@
                     <figure class="dr-figure reveal">
                         <img class="zoomable" src="images/1/deep_research_example.png"
                             alt="Deep Research example output" />
-                        <figcaption>Web‑augmented research assistant producing a sourced answer.</figcaption>
+                        <figcaption>Web-augmented research assistant producing a sourced answer.</figcaption>
                     </figure>
                 </div>
             </div>
@@ -159,7 +166,8 @@
             <!-- What is an Agent? Mini visual -->
             <div class="agent-mini">
                 <h3>What is an Agent?</h3>
-                <p class="section-lede">An agent <em>perceives</em> and <em>acts</em> in an environment—classically,
+                <p class="section-lede">So what actually is an agent? For this we can turn to the classic definition of a 
+                    <em>rational</em> agent. An agent <em>perceives</em> and <em>acts</em> in an environment—classically,
                     “anything that can be viewed as perceiving its environment through sensors and acting upon that
                     environment through actuators” (<a class="source-link"
                         href="https://elibrary.pearson.de/book/99.150005/9781292401171" target="_blank"
@@ -182,7 +190,7 @@
                                 <button class="hotspot hs-act" aria-expanded="false" aria-controls="hs-act">Act</button>
 
                                 <div class="callout" id="hs-perceive" role="region" aria-label="Perceive details">
-                                    Sensors and inputs: camera, microphone, web‑API responses, even a text prompt for an
+                                    Sensors and inputs: camera, microphone, web-API responses, even a text prompt for an
                                     LLM agent. The agent reasons over the <strong>entire percept history</strong> →
                                     memory.
                                 </div>
@@ -192,7 +200,7 @@
                                     w.r.t. a <strong>performance measure</strong>.
                                 </div>
                                 <div class="callout" id="hs-act" role="region" aria-label="Act details">
-                                    Actuators and outputs: motors, display/screen, mouse clicks, messages, or an LLM’s
+                                    Actuators and outputs: motors, display/screen, mouse clicks, messages, or an LLM's
                                     generated text/function call.
                                 </div>
                             </div>
@@ -214,15 +222,15 @@
 
             <!-- Inside a Language Agent: next-token LM → finetuning → framework -->
             <div class="lm-agent reveal" id="lm-agent">
-                <h3>Inside a Language Agent: next‑token LM → finetuning → framework</h3>
+                <h3>Inside a Language Agent: next-token LM → finetuning → framework</h3>
                 <p class="section-lede">Now that we now what a <em>rational</em> agent is, we turn towards
                     <em>language</em> agents. The <strong>LM acts as the agent program</strong> that maps percept
                     history to actions. Here, <em>percepts</em> and <em>actions</em> are text: tool outputs and context
                     come in as tokens; actions go out as tokens (final answers or <strong>function calls</strong>). The
-                    LM is trained with the <strong>language‑modeling objective</strong> (predict the next token). With
+                    LM is trained with the <strong>language-modeling objective</strong> (predict the next token). With
                     <strong>finetuning</strong> (instruction tuning, RLHF) and an <strong>agentic framework</strong>
-                    (prompt builder, tools, memory, response extractor), the same LM carries out goal‑directed
-                    behavior—while still being just a next‑token predictor.
+                    (prompt builder, tools, memory, response extractor), the same LM carries out goal-directed
+                    behavior, while still being just a next-token predictor.
                 </p>
 
                 <div class="lm-grid">
@@ -270,14 +278,16 @@
                             <text x="525" y="230" class="label big" data-role="ntp">LM</text>
 
                             <!-- arrows: pb → seq, into LM, LM forward, loop back, seq → extractor -->
+                            <!-- 
                             <line x1="240" y1="188" x2="280" y2="188" class="arrow" marker-end="url(#arrow)" />
                             <line x1="420" y1="188" x2="450" y2="188" class="arrow fwd" marker-end="url(#arrow)" />
                             <line x1="610" y1="230" x2="720" y2="230" class="arrow" marker-end="url(#arrow)" />
-                            <circle cx="610" cy="230" r="5" class="dot" />
+                            -->
+
                             <!-- autoregressive loop inside seq2seq -->
                             <path d="M 610 230 C 660 230 660 295 500 300 C 380 305 380 220 420 188" class="loop"
                                 marker-end="url(#arrow)" />
-                            <text x="440" y="320" class="label medium" data-role="ntp">next‑token prediction</text>
+                            <text x="440" y="320" class="label medium" data-role="ntp">next-token prediction</text>
 
                             <!-- response extractor and output y -->
                             <rect id="re" x="720" y="185" rx="14" ry="14" width="150" height="90" class="box comp" />
@@ -288,7 +298,7 @@
                         </svg>
 
                         <div class="legend">
-                            <button class="chip sel" data-mode="pretrain" aria-pressed="true">Pretraining: next‑token
+                            <button class="chip sel" data-mode="pretrain" aria-pressed="true">Pretraining: next-token
                                 LM</button>
                             <button class="chip" data-mode="finetune">Finetuning: SFT / RLHF</button>
                             <button class="chip" data-mode="framework">Framework: tools · memory · planner</button>
@@ -297,15 +307,15 @@
 
                     <div class="explain" id="lmExplain">
                         <div class="pane show" data-for="pretrain">
-                            <h4>Pretraining: next‑token LM</h4>
-                            <p>Optimize log‑likelihood of text: maximize p(w<sub>t</sub> | w<sub>1..t‑1</sub>). The LM
-                                learns broad world knowledge, patterns, and procedures from sequences, but it’s still
+                            <h4>Pretraining: next-token LM</h4>
+                            <p>Optimize log-likelihood of text: maximize p(w<sub>t</sub> | w<sub>1..t-1</sub>). The LM
+                                learns broad world knowledge, patterns, and procedures from sequences, but it's still
                                 just predicting the next token.</p>
                         </div>
                         <div class="pane" data-for="finetune">
                             <h4>Finetuning: instruction following</h4>
                             <p>Supervised instruction tuning and RLHF align the LM to follow instructions and prefer
-                                helpful/honest/harmless outputs. The objective is still token prediction—only the
+                                helpful/honest/harmless outputs. The objective is still token prediction, only the
                                 data/feedback change.</p>
                         </div>
                         <div class="pane" data-for="framework">
@@ -316,7 +326,7 @@
                                 <li><strong>Response extractor</strong>: parse function calls, citations, or final y.
                                 </li>
                             </ul>
-                            <p>The LM remains a next‑token predictor; the framework makes it <em>agentic</em>.</p>
+                            <p>The LM remains a next-token predictor; the framework makes it <em>agentic</em>.</p>
                             <p class="small-note">This is the scaffolding behind <a href="#deep-research">Deep
                                     Research</a>: the framework actuates tools (web search, browsing, retrieval,
                                 citation extraction) to plan, verify, and produce sourced answers.</p>
@@ -327,12 +337,12 @@
 
             <hr class="intro-sep" aria-hidden="true" />
             <!-- From Rational → Language Agents (polished contrast) -->
-            <section class="contrast-agents reveal" aria-labelledby="contrastTitle">
+            <div class="contrast-agents reveal" aria-labelledby="contrastTitle">
                 <h3 id="contrastTitle">From Rational → Language Agents</h3>
                 <div class="contrast-matrix" role="table" aria-label="Rational vs Language agents">
                     <div class="matrix-head">
                         <div class="th" role="columnheader">Rational (classic)</div>
-                        <div class="th" role="columnheader">Language (LLM‑based)</div>
+                        <div class="th" role="columnheader">Language (LLM-based)</div>
                     </div>
                     <div class="row" role="row">
                         <div class="cell" role="cell">
@@ -347,11 +357,11 @@
                     <div class="row" role="row">
                         <div class="cell" role="cell">
                             <div class="k">World model</div>
-                            <div class="v">hand‑crafted, task‑specific</div>
+                            <div class="v">hand-crafted, task-specific</div>
                         </div>
                         <div class="cell" role="cell">
                             <div class="k">World model</div>
-                            <div class="v"><strong>pretraining prior</strong> on trillion‑token corpora</div>
+                            <div class="v"><strong>pretraining prior</strong> on trillion-token corpora</div>
                         </div>
                     </div>
                     <div class="row" role="row">
@@ -361,17 +371,17 @@
                         </div>
                         <div class="cell" role="cell">
                             <div class="k">Policy</div>
-                            <div class="v">next‑token LM + finetuning; <strong>ICL</strong> for fast adaptation</div>
+                            <div class="v">next-token LM + finetuning; <strong>ICL</strong> for fast adaptation</div>
                         </div>
                     </div>
                     <div class="row" role="row">
                         <div class="cell" role="cell">
                             <div class="k">Adaptation</div>
-                            <div class="v">re‑engineering for new tasks</div>
+                            <div class="v">re-engineering for new tasks</div>
                         </div>
                         <div class="cell" role="cell">
                             <div class="k">Adaptation</div>
-                            <div class="v">few‑shot examples in context; no recompilation</div>
+                            <div class="v">few-shot examples in context; no recompilation</div>
                         </div>
                     </div>
                     <div class="row" role="row">
@@ -386,14 +396,18 @@
                     </div>
                 </div>
 
-                <p class="section-lede" style="margin-top:.9em">In short, the <em>loop</em> stays the same but the
+                <p class="section-lede" style="margin-top:.8em">In short, the <em>loop</em> stays the same but the
                     <em>medium</em> flips to language. Percepts and actions are text (including structured function
-                    calls), the world model is a broad <strong>pretraining prior</strong>, and <strong>in‑context
+                    calls), the world model is a broad <strong>pretraining prior</strong>, and <strong>in-context
                         learning</strong> allows quick adaptation. Language becomes the uniform interface for tools and
-                    components. This shift explains the renewed interest: it’s not just hype, but a <strong>different
+                    components. This shift explains the renewed interest: it's not just hype, but a <strong>different
                         substrate and architecture</strong> enabling practical language agents.
+                        Agent design moved beyond rule-bound settings toward more flexible, learning-driven
+                architectures that adapt to context. Their prominence today reflects renewed feasibility 
+                rather than novelty. What has changed is the substrate: large language models, tool-augmented 
+                execution, and scalable memory make long-standing agent designs practical at last.
                 </p>
-            </section>
+            </div>
 
             <hr class="intro-sep" aria-hidden="true" />
 
@@ -508,7 +522,7 @@
                     border: 0;
                     height: 1px;
                     background: rgba(0, 0, 0, .12);
-                    margin: 1.2em 0 0.8em;
+                    margin: 1.0em 0 0.6em; /* slightly tighter overall */
                 }
 
                 /* Split layout used by Vision + Deep Research */
@@ -659,10 +673,10 @@
 
                 .lm-grid {
                     margin-top: .8em;
-                    display: grid;
-                    grid-template-columns: minmax(420px, 1.1fr) minmax(360px, 1fr);
-                    gap: 1.6em;
-                    align-items: start;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1.3em;
+                    align-items: stretch;
                 }
 
                 .lm-svg {
@@ -671,6 +685,14 @@
                     background: #fff;
                     border: 1px solid #eee;
                     border-radius: .6em;
+                }
+
+                .diagram-block { max-width: 100%; }
+                .diagram-block .legend { justify-content: center; }
+                .explain { max-width: 980px; margin: 0 auto; }
+
+                @media (min-width: 1200px) {
+                    .explain { max-width: 1000px; }
                 }
 
                 .box {
@@ -727,9 +749,7 @@
                     stroke-width: 2px;
                 }
 
-                .dot {
-                    fill: #000;
-                }
+                /* Removed .dot element (was a moving marker) */
 
                 /* Improve readability of SVG labels */
                 .lm-svg .label {
@@ -867,10 +887,10 @@
                 }
 
                 .agent-explain {
-                    display: grid;
-                    grid-template-columns: minmax(360px, 1.1fr) minmax(320px, 1fr);
-                    gap: 1.6em;
-                    align-items: start;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1.2em;
+                    align-items: stretch;
                 }
 
                 .agent-left {
@@ -878,13 +898,13 @@
                 }
 
                 .agent-diagram {
-                    max-width: 760px;
+                    max-width: 100%;
                     margin: 0 auto;
                 }
 
                 .diagram-wrap {
                     position: relative;
-                    width: 75%;
+                    width: 75%; /* reduced from full width */
                     margin: 0 auto;
                 }
 
@@ -968,6 +988,16 @@
                 .agent-points {
                     margin: .4em 0 0;
                     padding-left: 1.1em;
+                    max-width: 900px;
+                    align-self: center;
+                }
+
+                /* Optional: widen callouts proportionally for larger figure */
+                .agent-diagram .callout { max-width: 380px; }
+
+                /* Responsive refinement: on very wide screens keep bullets centered */
+                @media (min-width: 1200px) {
+                    .agent-points { padding-left: 1.4em; }
                 }
 
                 .agent-points li {
@@ -975,9 +1005,14 @@
                     line-height: 1.45;
                 }
 
-                /* Contrast: From Rational → Language Agents */
+                /* Contrast: From Rational → Language Agents (tighter spacing) */
                 .contrast-agents {
-                    margin-top: 1.4em;
+                    margin-top: .4em; /* tighter default */
+                }
+
+                /* If a contrast-agents section immediately follows a separator, collapse extra space */
+                .intro-sep + .contrast-agents {
+                    margin-top: .2em;
                 }
 
                 .contrast-agents h3 {
@@ -985,7 +1020,7 @@
                 }
 
                 .contrast-matrix {
-                    margin-top: .6em;
+                    margin-top: .3em; /* reduced to bring table closer to heading */
                     border: 1px solid #e8e8e8;
                     border-radius: .6em;
                     overflow: hidden;
@@ -1165,7 +1200,6 @@
                 .lm-agent .lm-svg .box,
                 .lm-agent .lm-svg .arrow,
                 .lm-agent .lm-svg .loop,
-                .lm-agent .lm-svg .dot,
                 .lm-agent .lm-svg text {
                     transition: opacity .2s ease, stroke-width .2s ease, filter .2s ease, stroke .2s ease;
                 }
@@ -1174,7 +1208,6 @@
                 .lm-agent.mode-pretrain .lm-svg .box,
                 .lm-agent.mode-pretrain .lm-svg .arrow,
                 .lm-agent.mode-pretrain .lm-svg .loop,
-                .lm-agent.mode-pretrain .lm-svg .dot,
                 .lm-agent.mode-pretrain .lm-svg text {
                     opacity: .25;
                 }
@@ -1182,7 +1215,6 @@
                 .lm-agent.mode-pretrain #lmCore,
                 .lm-agent.mode-pretrain .loop:not(#outerLoop),
                 .lm-agent.mode-pretrain .fwd,
-                .lm-agent.mode-pretrain .dot,
                 .lm-agent.mode-pretrain text[data-role="ntp"] {
                     opacity: 1;
                     stroke-width: 1;
@@ -1194,7 +1226,6 @@
                 .lm-agent.mode-finetune .lm-svg .box,
                 .lm-agent.mode-finetune .lm-svg .arrow,
                 .lm-agent.mode-finetune .lm-svg .loop,
-                .lm-agent.mode-finetune .lm-svg .dot,
                 .lm-agent.mode-finetune .lm-svg text {
                     opacity: .25;
                 }
@@ -1213,7 +1244,6 @@
                 .lm-agent.mode-framework .lm-svg .box,
                 .lm-agent.mode-framework .lm-svg .arrow,
                 .lm-agent.mode-framework .lm-svg .loop,
-                .lm-agent.mode-framework .lm-svg .dot,
                 .lm-agent.mode-framework .lm-svg text {
                     opacity: .25;
                 }
@@ -1373,7 +1403,7 @@
 
     <section id="react-loop">
         <div class="projects-header">
-            <h1>LLM's for Acting</h1>
+            <h1>LLMs for Acting</h1>
         </div>
 
         <head>
@@ -2513,7 +2543,7 @@
             <br /><br />
             <button class="btn" onclick="runToolDemo()">Run Tool Demo</button>
             <pre id="demoOutput" style="margin-top:1em;opacity:0.8;"></pre>
-            <p style="font-size:0.85em;opacity:0.7;margin-top:0.6em;">Inspired by WebGPT’s tool-augmented setup
+            <p style="font-size:0.85em;opacity:0.7;margin-top:0.6em;">Inspired by WebGPT's tool-augmented setup
                 <sup>Nakano et al., 2021</sup>.
             </p>
         </div>
@@ -2615,7 +2645,7 @@
                 <span class="code-keyword">Tool output:</span> "12032"<br>
                 <span class="code-keyword">LLM answer:</span> "The result is 12,032." <sup>Schick et al., 2023</sup>
             </div>
-            <p style="font-size:0.85em;opacity:0.7;">Adapted from Toolformer’s tool-augmented training.</p>
+            <p style="font-size:0.85em;opacity:0.7;">Adapted from Toolformer's tool-augmented training.</p>
         </div>
 
         <!-- 🔹 New Card: Interactive Comparison -->
@@ -3145,7 +3175,11 @@
             if (!textElement || !iframe) return;
             const textWidth = textElement.offsetWidth;
             iframe.style.width = textWidth + 'px';
-            iframe.style.height = (textWidth * 0.6667) + 'px';
+            // Increase vertical space: use a taller aspect ratio and enforce a sensible minimum height
+            // Old height was 2/3 of width (~0.6667). That caused internal scrolling.
+            // New: 0.85 * width, but never less than 640px.
+            const newHeight = Math.max(textWidth * 0.85, 640);
+            iframe.style.height = newHeight + 'px';
         }
         window.addEventListener('resize', adjustIframeSize);
         window.addEventListener('load', adjustIframeSize);
