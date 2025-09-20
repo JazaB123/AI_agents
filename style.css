@@ -79,6 +79,11 @@ header {
   transform: translateX(4px);
 }
 
+/* Active nav item should be bold to indicate current section */
+.sidebar nav ul li a.active {
+  font-weight: 700;
+}
+
 .page-title {
   position: fixed;
   top: 1rem;
@@ -94,17 +99,18 @@ header {
    Sections
 ------------------------- */
 section {
-  padding: 5rem 10%;
+  /* Reduced vertical padding to tighten space between sections */
+  padding: 3.5rem 10%;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .projects-header h1 {
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 2.5rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  font-size: 2.35rem; /* slightly larger */
+  margin-bottom: 2rem; /* a bit tighter */
+  text-transform: none; /* natural casing */
+  letter-spacing: .5px;
 }
 
 /* ------------------------
@@ -127,9 +133,29 @@ section {
 }
 
 h2, h3, h4 {
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
   font-weight: 700;
   color: #111;
+}
+
+/* Increase section-level h2 size (the main section headings like Introduction, etc.) */
+section > h1 span, section > h1, section > h2:first-of-type {
+  font-size: 2.1rem;
+  line-height: 1.15;
+}
+
+/* Slightly larger h2 generally */
+h2 { font-size: 1.65rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.05rem; }
+
+/* On small screens, keep things readable */
+@media (max-width: 768px) {
+  section { padding: 2.75rem 1.5rem; }
+  .projects-header h1 { font-size: 1.9rem; }
+  section > h1 span, section > h1, section > h2:first-of-type { font-size: 1.8rem; }
+  h2 { font-size: 1.45rem; }
+  h3 { font-size: 1.15rem; }
 }
 
 /* ------------------------
